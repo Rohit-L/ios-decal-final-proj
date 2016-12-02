@@ -18,9 +18,27 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let view = UIView(frame:
             CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0)
         )
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.primary()
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(view)
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.primary()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        self.tabBarController?.tabBar.barTintColor = UIColor.secondary()
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        
+        // set red as selected background color
+        let tabBar = self.tabBarController?.tabBar
+        let numberOfItems = CGFloat((tabBar?.items!.count)!)
+        let tabBarItemSize = CGSize(width: (tabBar?.frame.width)! / numberOfItems, height: (tabBar?.frame.height)!)
+        tabBar?.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.primary(), size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
+        
+        // remove default border
+        tabBar?.frame.size.width = self.view.frame.width + 4
+        tabBar?.frame.origin.x = -2
         
         
         self.title = "Feed"
@@ -44,6 +62,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.tableView.reloadData()
                     i += 1
                 }
+                
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.tableView.reloadData()
+                })
 
             }
         }
@@ -85,9 +107,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.label.text = self.titles[indexPath.row]
         cell.productDescription.text = self.descriptions[indexPath.row]
         
-        cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.layoutMargins = UIEdgeInsets.zero
+//        cell.preservesSuperviewLayoutMargins = false
+//        cell.separatorInset = UIEdgeInsets.zero
+//        cell.layoutMargins = UIEdgeInsets.zero
         
         return cell
     }

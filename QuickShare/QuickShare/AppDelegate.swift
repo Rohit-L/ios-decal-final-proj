@@ -46,6 +46,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
+extension UIColor {
+    class func primary() -> UIColor {
+        return UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(159 / 255.0), blue: CGFloat(183 / 255.0), alpha: CGFloat(1))
+    }
+    
+    class func secondary() -> UIColor {
+        return UIColor(red: CGFloat(241 / 255.0), green: CGFloat(241 / 255.0), blue: CGFloat(243 / 255.0), alpha: CGFloat(1))
+    }
+}
+
 /* Extension to load image from URL into UIImageView
  * Source: http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
  */
@@ -67,6 +77,18 @@ extension UIImageView {
     func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
+    }
+}
+
+extension UIImage {
+    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
     }
 }
 
