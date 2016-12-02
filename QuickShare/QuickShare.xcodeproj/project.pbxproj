@@ -1,0 +1,677 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B503C3F11DE4041900F3853A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C3F01DE4041900F3853A /* AppDelegate.swift */; };
+		B503C3F31DE4041900F3853A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C3F21DE4041900F3853A /* FeedViewController.swift */; };
+		B503C3F81DE4041900F3853A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B503C3F61DE4041900F3853A /* Main.storyboard */; };
+		B503C3FA1DE4041900F3853A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B503C3F91DE4041900F3853A /* Assets.xcassets */; };
+		B503C3FD1DE4041900F3853A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B503C3FB1DE4041900F3853A /* LaunchScreen.storyboard */; };
+		B503C4081DE4041900F3853A /* QuickShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4071DE4041900F3853A /* QuickShareTests.swift */; };
+		B503C4131DE4041900F3853A /* QuickShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4121DE4041900F3853A /* QuickShareUITests.swift */; };
+		B503C4211DE4102800F3853A /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B503C4201DE4102800F3853A /* Material.framework */; };
+		B503C4221DE4102800F3853A /* Material.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B503C4201DE4102800F3853A /* Material.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B504486C1DF10ABF0048B794 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504486B1DF10ABF0048B794 /* Just.swift */; };
+		B5FBC1051DF00F280052D46E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */; };
+		B5FBC1071DF0131F0052D46E /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBC1061DF0131F0052D46E /* ItemViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B503C4041DE4041900F3853A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B503C3E51DE4041900F3853A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B503C3EC1DE4041900F3853A;
+			remoteInfo = QuickShare;
+		};
+		B503C40F1DE4041900F3853A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B503C3E51DE4041900F3853A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B503C3EC1DE4041900F3853A;
+			remoteInfo = QuickShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B503C4231DE4102800F3853A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B503C4221DE4102800F3853A /* Material.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B503C3ED1DE4041900F3853A /* QuickShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B503C3F01DE4041900F3853A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B503C3F21DE4041900F3853A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		B503C3F71DE4041900F3853A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B503C3F91DE4041900F3853A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B503C3FC1DE4041900F3853A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B503C3FE1DE4041900F3853A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B503C4031DE4041900F3853A /* QuickShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B503C4071DE4041900F3853A /* QuickShareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickShareTests.swift; sourceTree = "<group>"; };
+		B503C4091DE4041900F3853A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B503C40E1DE4041900F3853A /* QuickShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B503C4121DE4041900F3853A /* QuickShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickShareUITests.swift; sourceTree = "<group>"; };
+		B503C4141DE4041900F3853A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B503C4201DE4102800F3853A /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = Carthage/Build/iOS/Material.framework; sourceTree = "<group>"; };
+		B504486B1DF10ABF0048B794 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
+		B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableViewCell.swift; path = ../ItemTableViewCell.swift; sourceTree = "<group>"; };
+		B5FBC1061DF0131F0052D46E /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B503C3EA1DE4041900F3853A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B503C4211DE4102800F3853A /* Material.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B503C4001DE4041900F3853A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B503C40B1DE4041900F3853A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B503C3E41DE4041900F3853A = {
+			isa = PBXGroup;
+			children = (
+				B503C4201DE4102800F3853A /* Material.framework */,
+				B503C3EF1DE4041900F3853A /* QuickShare */,
+				B503C4061DE4041900F3853A /* QuickShareTests */,
+				B503C4111DE4041900F3853A /* QuickShareUITests */,
+				B503C3EE1DE4041900F3853A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B503C3EE1DE4041900F3853A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B503C3ED1DE4041900F3853A /* QuickShare.app */,
+				B503C4031DE4041900F3853A /* QuickShareTests.xctest */,
+				B503C40E1DE4041900F3853A /* QuickShareUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B503C3EF1DE4041900F3853A /* QuickShare */ = {
+			isa = PBXGroup;
+			children = (
+				B504486B1DF10ABF0048B794 /* Just.swift */,
+				B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */,
+				B503C3F01DE4041900F3853A /* AppDelegate.swift */,
+				B503C3F21DE4041900F3853A /* FeedViewController.swift */,
+				B503C3F61DE4041900F3853A /* Main.storyboard */,
+				B5FBC1061DF0131F0052D46E /* ItemViewController.swift */,
+				B503C3F91DE4041900F3853A /* Assets.xcassets */,
+				B503C3FB1DE4041900F3853A /* LaunchScreen.storyboard */,
+				B503C3FE1DE4041900F3853A /* Info.plist */,
+			);
+			path = QuickShare;
+			sourceTree = "<group>";
+		};
+		B503C4061DE4041900F3853A /* QuickShareTests */ = {
+			isa = PBXGroup;
+			children = (
+				B503C4071DE4041900F3853A /* QuickShareTests.swift */,
+				B503C4091DE4041900F3853A /* Info.plist */,
+			);
+			path = QuickShareTests;
+			sourceTree = "<group>";
+		};
+		B503C4111DE4041900F3853A /* QuickShareUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B503C4121DE4041900F3853A /* QuickShareUITests.swift */,
+				B503C4141DE4041900F3853A /* Info.plist */,
+			);
+			path = QuickShareUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B503C3EC1DE4041900F3853A /* QuickShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B503C4171DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShare" */;
+			buildPhases = (
+				B503C3E91DE4041900F3853A /* Sources */,
+				B503C3EA1DE4041900F3853A /* Frameworks */,
+				B503C3EB1DE4041900F3853A /* Resources */,
+				B503C4231DE4102800F3853A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickShare;
+			productName = QuickShare;
+			productReference = B503C3ED1DE4041900F3853A /* QuickShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B503C4021DE4041900F3853A /* QuickShareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B503C41A1DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShareTests" */;
+			buildPhases = (
+				D20FECC621DB37353E7A53D8 /* [CP] Check Pods Manifest.lock */,
+				B503C3FF1DE4041900F3853A /* Sources */,
+				B503C4001DE4041900F3853A /* Frameworks */,
+				B503C4011DE4041900F3853A /* Resources */,
+				28915B9C287D7E27AEF4179B /* [CP] Embed Pods Frameworks */,
+				EF844B3423FF7AF55E0305E0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B503C4051DE4041900F3853A /* PBXTargetDependency */,
+			);
+			name = QuickShareTests;
+			productName = QuickShareTests;
+			productReference = B503C4031DE4041900F3853A /* QuickShareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B503C40D1DE4041900F3853A /* QuickShareUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B503C41D1DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShareUITests" */;
+			buildPhases = (
+				BD3512A862C6085F31CC76DE /* [CP] Check Pods Manifest.lock */,
+				B503C40A1DE4041900F3853A /* Sources */,
+				B503C40B1DE4041900F3853A /* Frameworks */,
+				B503C40C1DE4041900F3853A /* Resources */,
+				ED2452B8AA7A685B25249AB3 /* [CP] Embed Pods Frameworks */,
+				BAC04EDA1F34C399B6462EC2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B503C4101DE4041900F3853A /* PBXTargetDependency */,
+			);
+			name = QuickShareUITests;
+			productName = QuickShareUITests;
+			productReference = B503C40E1DE4041900F3853A /* QuickShareUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B503C3E51DE4041900F3853A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Rohit;
+				TargetAttributes = {
+					B503C3EC1DE4041900F3853A = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5FW8TQJ4DK;
+						ProvisioningStyle = Automatic;
+					};
+					B503C4021DE4041900F3853A = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B503C3EC1DE4041900F3853A;
+					};
+					B503C40D1DE4041900F3853A = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B503C3EC1DE4041900F3853A;
+					};
+				};
+			};
+			buildConfigurationList = B503C3E81DE4041900F3853A /* Build configuration list for PBXProject "QuickShare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B503C3E41DE4041900F3853A;
+			productRefGroup = B503C3EE1DE4041900F3853A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B503C3EC1DE4041900F3853A /* QuickShare */,
+				B503C4021DE4041900F3853A /* QuickShareTests */,
+				B503C40D1DE4041900F3853A /* QuickShareUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B503C3EB1DE4041900F3853A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B503C3FD1DE4041900F3853A /* LaunchScreen.storyboard in Resources */,
+				B503C3FA1DE4041900F3853A /* Assets.xcassets in Resources */,
+				B503C3F81DE4041900F3853A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B503C4011DE4041900F3853A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B503C40C1DE4041900F3853A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28915B9C287D7E27AEF4179B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareTests/Pods-QuickShareTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAC04EDA1F34C399B6462EC2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareUITests/Pods-QuickShareUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD3512A862C6085F31CC76DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D20FECC621DB37353E7A53D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED2452B8AA7A685B25249AB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareUITests/Pods-QuickShareUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF844B3423FF7AF55E0305E0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareTests/Pods-QuickShareTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B503C3E91DE4041900F3853A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B504486C1DF10ABF0048B794 /* Just.swift in Sources */,
+				B5FBC1051DF00F280052D46E /* ItemTableViewCell.swift in Sources */,
+				B5FBC1071DF0131F0052D46E /* ItemViewController.swift in Sources */,
+				B503C3F11DE4041900F3853A /* AppDelegate.swift in Sources */,
+				B503C3F31DE4041900F3853A /* FeedViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B503C3FF1DE4041900F3853A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B503C4081DE4041900F3853A /* QuickShareTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B503C40A1DE4041900F3853A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B503C4131DE4041900F3853A /* QuickShareUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B503C4051DE4041900F3853A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B503C3EC1DE4041900F3853A /* QuickShare */;
+			targetProxy = B503C4041DE4041900F3853A /* PBXContainerItemProxy */;
+		};
+		B503C4101DE4041900F3853A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B503C3EC1DE4041900F3853A /* QuickShare */;
+			targetProxy = B503C40F1DE4041900F3853A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B503C3F61DE4041900F3853A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B503C3F71DE4041900F3853A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B503C3FB1DE4041900F3853A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B503C3FC1DE4041900F3853A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B503C4151DE4041900F3853A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B503C4161DE4041900F3853A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B503C4181DE4041900F3853A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5FW8TQJ4DK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = QuickShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B503C4191DE4041900F3853A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5FW8TQJ4DK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = QuickShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B503C41B1DE4041900F3853A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuickShareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickShare.app/QuickShare";
+			};
+			name = Debug;
+		};
+		B503C41C1DE4041900F3853A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuickShareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickShare.app/QuickShare";
+			};
+			name = Release;
+		};
+		B503C41E1DE4041900F3853A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = QuickShareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = QuickShare;
+			};
+			name = Debug;
+		};
+		B503C41F1DE4041900F3853A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = QuickShareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = QuickShare;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B503C3E81DE4041900F3853A /* Build configuration list for PBXProject "QuickShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B503C4151DE4041900F3853A /* Debug */,
+				B503C4161DE4041900F3853A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B503C4171DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B503C4181DE4041900F3853A /* Debug */,
+				B503C4191DE4041900F3853A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B503C41A1DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B503C41B1DE4041900F3853A /* Debug */,
+				B503C41C1DE4041900F3853A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B503C41D1DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShareUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B503C41E1DE4041900F3853A /* Debug */,
+				B503C41F1DE4041900F3853A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B503C3E51DE4041900F3853A /* Project object */;
+}
