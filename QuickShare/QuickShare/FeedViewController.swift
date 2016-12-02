@@ -30,11 +30,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tabBarItem.title = "Feed"
         
-        print("hello")
-        Just.get("http://localhost:3000/item/read") { r in
-            print("world")
+        Just.get("https://quickshareios.herokuapp.com/item/read") { r in
             if r.ok { /* success! */
-                print(r.text)
+                let data = r.text?.data(using: .utf8)!
+                let json = try? JSONSerialization.jsonObject(with: data!) as! [Any]
+                print(json?.count == 2)
+                var i = 0
+                while i < (json?.count)! {
+                    let item = json?[i] as! [String:Any]
+                    self.titles.append(item["title"]! as! String)
+                    self.descriptions.append(item["description"]! as! String)
+                    
+                    self.tableView.reloadData()
+                    i += 1
+                }
+
             }
         }
         
@@ -54,12 +64,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    // These strings will be the data for the table view cells
-    let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
-    
-    // These are the colors of the square views in our table view cells.
-    // In a real project you might use UIImages.
-    let colors = [UIColor.blue, UIColor.yellow, UIColor.magenta, UIColor.red, UIColor.brown]
+    var titles: [String] = []
+    var descriptions: [String] = []
     
     // Don't forget to enter this in IB also
     let cellReuseIdentifier = "cell"
@@ -68,7 +74,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.animals.count
+        return self.titles.count
     }
     
     // create a cell for each table view row
@@ -76,9 +82,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell:ItemTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! ItemTableViewCell
         cell.product.downloadedFrom(link: "https://cdn.pixabay.com/photo/2013/10/02/15/51/tree-189852_1280.jpg")
-        //cell.product.backgroundColor = self.colors[indexPath.row]
-        cell.label.text = self.animals[indexPath.row]
-        cell.productDescription.text = "A cool picture!"
+        cell.label.text = self.titles[indexPath.row]
+        cell.productDescription.text = self.descriptions[indexPath.row]
+        
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
