@@ -30,6 +30,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tabBarItem.title = "Feed"
         
+        print("hello")
+        Just.get("http://localhost:3000/item/read") { r in
+            print("world")
+            if r.ok { /* success! */
+                print(r.text)
+            }
+        }
         
     }
     
