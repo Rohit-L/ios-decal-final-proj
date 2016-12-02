@@ -18,7 +18,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let view = UIView(frame:
             CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0)
         )
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor.black
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(view)
         
@@ -72,6 +72,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //cell.product.backgroundColor = self.colors[indexPath.row]
         cell.label.text = self.animals[indexPath.row]
         cell.productDescription.text = "A cool picture!"
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         
         return cell
     }
