@@ -16,7 +16,7 @@
             <objects>
                 <navigationController title="Feed" hidesBarsOnSwipe="YES" id="qNz-Rd-rFY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="home" id="yQx-9C-H3p"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qwo-Qh-TP7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qwo-Qh-TP7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -133,17 +133,6 @@
                                                                 <constraint firstItem="QaY-7n-wtk" firstAttribute="top" secondItem="eKj-iQ-Fvq" secondAttribute="bottom" constant="8" id="vAn-6d-gsu"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.0" green="0.62352941179999999" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="label" destination="QaY-7n-wtk" id="ogC-pQ-a8Z"/>
                                                             <outlet property="product" destination="aHk-aY-UaH" id="qtP-b9-a8e"/>

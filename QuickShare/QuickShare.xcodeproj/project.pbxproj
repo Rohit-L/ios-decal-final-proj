@@ -52,6 +52,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B501C1461DF28AA800669DB9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/Bolts/Bolts.framework"; sourceTree = "<group>"; };
+		B501C1471DF28AA800669DB9 /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FacebookCore/FacebookCore.framework"; sourceTree = "<group>"; };
+		B501C1481DF28AA800669DB9 /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FacebookLogin/FacebookLogin.framework"; sourceTree = "<group>"; };
+		B501C1491DF28AA800669DB9 /* FacebookShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookShare.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FacebookShare/FacebookShare.framework"; sourceTree = "<group>"; };
+		B501C14A1DF28AA800669DB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		B501C14B1DF28AA800669DB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		B501C14C1DF28AA800669DB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FBSDKShareKit/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		B503C3ED1DE4041900F3853A /* QuickShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B503C3F01DE4041900F3853A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B503C3F21DE4041900F3853A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +80,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4AE13B88564195B558382AEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B503C4001DE4041900F3853A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +111,7 @@
 				B503C4061DE4041900F3853A /* QuickShareTests */,
 				B503C4111DE4041900F3853A /* QuickShareUITests */,
 				B503C3EE1DE4041900F3853A /* Products */,
+				F090C765EFB1F2138D3CAF8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +161,20 @@
 			path = QuickShareUITests;
 			sourceTree = "<group>";
 		};
+		F090C765EFB1F2138D3CAF8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B501C1461DF28AA800669DB9 /* Bolts.framework */,
+				B501C1471DF28AA800669DB9 /* FacebookCore.framework */,
+				B501C1481DF28AA800669DB9 /* FacebookLogin.framework */,
+				B501C1491DF28AA800669DB9 /* FacebookShare.framework */,
+				B501C14A1DF28AA800669DB9 /* FBSDKCoreKit.framework */,
+				B501C14B1DF28AA800669DB9 /* FBSDKLoginKit.framework */,
+				B501C14C1DF28AA800669DB9 /* FBSDKShareKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +185,7 @@
 				B503C3E91DE4041900F3853A /* Sources */,
 				B503C3EB1DE4041900F3853A /* Resources */,
 				B503C4231DE4102800F3853A /* Embed Frameworks */,
+				4AE13B88564195B558382AEB /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,12 +200,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B503C41A1DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShareTests" */;
 			buildPhases = (
-				D20FECC621DB37353E7A53D8 /* [CP] Check Pods Manifest.lock */,
 				B503C3FF1DE4041900F3853A /* Sources */,
 				B503C4001DE4041900F3853A /* Frameworks */,
 				B503C4011DE4041900F3853A /* Resources */,
-				28915B9C287D7E27AEF4179B /* [CP] Embed Pods Frameworks */,
-				EF844B3423FF7AF55E0305E0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,12 +218,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B503C41D1DE4041900F3853A /* Build configuration list for PBXNativeTarget "QuickShareUITests" */;
 			buildPhases = (
-				BD3512A862C6085F31CC76DE /* [CP] Check Pods Manifest.lock */,
 				B503C40A1DE4041900F3853A /* Sources */,
 				B503C40B1DE4041900F3853A /* Frameworks */,
 				B503C40C1DE4041900F3853A /* Resources */,
-				ED2452B8AA7A685B25249AB3 /* [CP] Embed Pods Frameworks */,
-				BAC04EDA1F34C399B6462EC2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,99 +306,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		28915B9C287D7E27AEF4179B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareTests/Pods-QuickShareTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BAC04EDA1F34C399B6462EC2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareUITests/Pods-QuickShareUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD3512A862C6085F31CC76DE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D20FECC621DB37353E7A53D8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		ED2452B8AA7A685B25249AB3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareUITests/Pods-QuickShareUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF844B3423FF7AF55E0305E0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickShareTests/Pods-QuickShareTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		B503C3E91DE4041900F3853A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -459,6 +390,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -488,12 +420,14 @@
 		B503C4191DE4041900F3853A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5FW8TQJ4DK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QuickShare/Frameworks",
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = QuickShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
