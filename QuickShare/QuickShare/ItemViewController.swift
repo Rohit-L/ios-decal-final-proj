@@ -9,10 +9,13 @@
 import UIKit
 
 class ItemViewController: UIViewController {
+    
+    var item: Item?
 
     @IBOutlet weak var itemImage: UIImageView!
     //@IBOutlet weak var descriptionLabel: UILabel!
     //@IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var sellerName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,11 @@ class ItemViewController: UIViewController {
         //self.titleLabel.text = "This is the title!"
         //self.descriptionLabel.text = "This is the description!"
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.itemImage.downloadedFrom(link: (item?.picture)!)
+        self.sellerName.text = item?.userName
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -7,26 +7,29 @@
 //
 
 import UIKit
-//import FacebookLogin
+import FBSDKLoginKit
 
-class FBLoginViewController: UIViewController {
+class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View Loaded")
-//        let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
-//        loginButton.center = view.center
-//        
-//        view.addSubview(loginButton)
+        
+        if ((FBSDKAccessToken.current()) != nil) {
+            print("YOU ARE LOGGED IN")
+        }
+        
+        let loginButton = FBSDKLoginButton.init()
+        loginButton.center = view.center
+        loginButton.delegate = self
+        view.addSubview(loginButton)
         // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = UIColor.primary()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("View Appeared!")
-//        if let accessToken = AccessToken.current {
-//            // User is logged in, use 'accessToken' here.
-//            self.dismiss(animated: true, completion: nil)
-//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +37,23 @@ class FBLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /**
+     Sent to the delegate when the button was used to login.
+     - Parameter loginButton: the sender
+     - Parameter result: The results of the login
+     - Parameter error: The error (if any) from the login
+     */
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if (!result.isCancelled) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+
+    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("LoggedOut")
+    }
 
     /*
     // MARK: - Navigation

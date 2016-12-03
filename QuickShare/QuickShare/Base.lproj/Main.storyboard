@@ -315,11 +315,30 @@
                     </view>
                     <connections>
                         <outlet property="itemImage" destination="8yx-GZ-wPi" id="Ecl-N4-ljK"/>
+                        <outlet property="sellerName" destination="yhr-Qf-wd2" id="2WV-37-l4F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ki5-GR-77D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2836" y="-722.78860569715152"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="9bM-yG-DO8">
+            <objects>
+                <viewController storyboardIdentifier="login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="96z-Eb-V1q" customClass="FBLoginViewController" customModule="QuickShare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xfO-F2-gwC"/>
+                        <viewControllerLayoutGuide type="bottom" id="8IB-J6-vGs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5p3-Wj-wv3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qt-2m-TUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3318" y="227"/>
         </scene>
         <!--MainApp-->
         <scene sceneID="yl2-sM-qoP">

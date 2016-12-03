@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B501C1571DF2A8B300669DB9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B501C1541DF2A8B300669DB9 /* Bolts.framework */; };
+		B501C1581DF2A8B300669DB9 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B501C1551DF2A8B300669DB9 /* FacebookCore.framework */; };
+		B501C1591DF2A8B300669DB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B501C1561DF2A8B300669DB9 /* FBSDKCoreKit.framework */; };
+		B501C15B1DF2A8C500669DB9 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B501C15A1DF2A8C500669DB9 /* FacebookLogin.framework */; };
+		B501C15D1DF2A8CC00669DB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B501C15C1DF2A8CC00669DB9 /* FBSDKLoginKit.framework */; };
 		B503C3F11DE4041900F3853A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C3F01DE4041900F3853A /* AppDelegate.swift */; };
 		B503C3F31DE4041900F3853A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C3F21DE4041900F3853A /* FeedViewController.swift */; };
 		B503C3F81DE4041900F3853A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B503C3F61DE4041900F3853A /* Main.storyboard */; };
@@ -15,6 +20,7 @@
 		B503C4081DE4041900F3853A /* QuickShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4071DE4041900F3853A /* QuickShareTests.swift */; };
 		B503C4131DE4041900F3853A /* QuickShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4121DE4041900F3853A /* QuickShareUITests.swift */; };
 		B504486C1DF10ABF0048B794 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504486B1DF10ABF0048B794 /* Just.swift */; };
+		B565B96A1DF2E18300639B47 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565B9691DF2E18300639B47 /* Item.swift */; };
 		B5C10F331DF241BE00364D8C /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */; };
 		B5C10F351DF2496D00364D8C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C10F341DF2496D00364D8C /* ProfileViewController.swift */; };
 		B5FBC1051DF00F280052D46E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */; };
@@ -59,6 +65,12 @@
 		B501C14A1DF28AA800669DB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		B501C14B1DF28AA800669DB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		B501C14C1DF28AA800669DB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../Library/Developer/Xcode/DerivedData/QuickShare-ecbjzffmxvcbmsfrfwhqsecpvcki/Build/Products/Debug-iphoneos/FBSDKShareKit/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		B501C1541DF2A8B300669DB9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		B501C1551DF2A8B300669DB9 /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = Carthage/Build/iOS/FacebookCore.framework; sourceTree = "<group>"; };
+		B501C1561DF2A8B300669DB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		B501C15A1DF2A8C500669DB9 /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = Carthage/Build/iOS/FacebookLogin.framework; sourceTree = "<group>"; };
+		B501C15C1DF2A8CC00669DB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		B501C15F1DF2AAD900669DB9 /* QuickShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickShare.entitlements; sourceTree = "<group>"; };
 		B503C3ED1DE4041900F3853A /* QuickShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B503C3F01DE4041900F3853A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B503C3F21DE4041900F3853A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +85,7 @@
 		B503C4121DE4041900F3853A /* QuickShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickShareUITests.swift; sourceTree = "<group>"; };
 		B503C4141DE4041900F3853A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B504486B1DF10ABF0048B794 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
+		B565B9691DF2E18300639B47 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		B5C10F341DF2496D00364D8C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +97,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B501C1571DF2A8B300669DB9 /* Bolts.framework in Frameworks */,
+				B501C1581DF2A8B300669DB9 /* FacebookCore.framework in Frameworks */,
+				B501C1591DF2A8B300669DB9 /* FBSDKCoreKit.framework in Frameworks */,
+				B501C15B1DF2A8C500669DB9 /* FacebookLogin.framework in Frameworks */,
+				B501C15D1DF2A8CC00669DB9 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,10 +146,12 @@
 		B503C3EF1DE4041900F3853A /* QuickShare */ = {
 			isa = PBXGroup;
 			children = (
+				B501C15F1DF2AAD900669DB9 /* QuickShare.entitlements */,
 				B504486B1DF10ABF0048B794 /* Just.swift */,
 				B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */,
 				B503C3F01DE4041900F3853A /* AppDelegate.swift */,
 				B503C3F21DE4041900F3853A /* FeedViewController.swift */,
+				B565B9691DF2E18300639B47 /* Item.swift */,
 				B503C3F61DE4041900F3853A /* Main.storyboard */,
 				B5C10F341DF2496D00364D8C /* ProfileViewController.swift */,
 				B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */,
@@ -164,6 +184,11 @@
 		F090C765EFB1F2138D3CAF8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B501C15C1DF2A8CC00669DB9 /* FBSDKLoginKit.framework */,
+				B501C15A1DF2A8C500669DB9 /* FacebookLogin.framework */,
+				B501C1541DF2A8B300669DB9 /* Bolts.framework */,
+				B501C1551DF2A8B300669DB9 /* FacebookCore.framework */,
+				B501C1561DF2A8B300669DB9 /* FBSDKCoreKit.framework */,
 				B501C1461DF28AA800669DB9 /* Bolts.framework */,
 				B501C1471DF28AA800669DB9 /* FacebookCore.framework */,
 				B501C1481DF28AA800669DB9 /* FacebookLogin.framework */,
@@ -186,6 +211,7 @@
 				B503C3EB1DE4041900F3853A /* Resources */,
 				B503C4231DE4102800F3853A /* Embed Frameworks */,
 				4AE13B88564195B558382AEB /* Frameworks */,
+				B501C15E1DF2A8F400669DB9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,6 +272,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5FW8TQJ4DK;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					B503C4021DE4041900F3853A = {
 						CreatedOnToolsVersion = 8.1;
@@ -306,6 +337,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B501C15E1DF2A8F400669DB9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FacebookCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FacebookLogin.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B503C3E91DE4041900F3853A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -315,6 +367,7 @@
 				B5FBC1051DF00F280052D46E /* ItemTableViewCell.swift in Sources */,
 				B5C10F331DF241BE00364D8C /* FBLoginViewController.swift in Sources */,
 				B5FBC1071DF0131F0052D46E /* ItemViewController.swift in Sources */,
+				B565B96A1DF2E18300639B47 /* Item.swift in Sources */,
 				B5C10F351DF2496D00364D8C /* ProfileViewController.swift in Sources */,
 				B503C3F11DE4041900F3853A /* AppDelegate.swift in Sources */,
 				B503C3F31DE4041900F3853A /* FeedViewController.swift in Sources */,
@@ -422,12 +475,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickShare/QuickShare.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5FW8TQJ4DK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QuickShare/Frameworks",
 					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = QuickShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
