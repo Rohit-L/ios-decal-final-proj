@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -15,47 +16,26 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        // Set status bar for entire application
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "login")
-        self.present(vc, animated: true, completion: nil)
-        
         let view = UIView(frame:
             CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0)
         )
+        
+        self.title = "Feed"
         view.backgroundColor = UIColor.primary()
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(view)
         
-        self.navigationController?.navigationBar.barTintColor = UIColor.primary()
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-        self.tabBarController?.tabBar.barTintColor = UIColor.secondary()
-        self.tabBarController?.tabBar.tintColor = UIColor.white
-        
-        // set selected background color of tab bar
-        let tabBar = self.tabBarController?.tabBar
-        let numberOfItems = CGFloat((tabBar?.items!.count)!)
-        let tabBarItemSize = CGSize(width: (tabBar?.frame.width)! / numberOfItems, height: (tabBar?.frame.height)!)
-        tabBar?.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.primary(), size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
-        
-        // remove default border
-        tabBar?.frame.size.width = self.view.frame.width + 4
-        tabBar?.frame.origin.x = -2
+        setNavigationBarStyle()
+        setTabBarStyle()
         
         searchBar.placeholder = "Search for a specific item."
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
         
-        self.title = "Feed"
+        
         self.view.backgroundColor = .white
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        self.tabBarItem.title = "Feed"
         
         Just.get("https://quickshareios.herokuapp.com/item/read") { r in
             if r.ok { /* success! */
@@ -85,6 +65,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Set status bar for entire application
+        if ((FBSDKAccessToken.current()) == nil) {
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "login")
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -156,6 +145,30 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    /* Helper Methods */
+    func setNavigationBarStyle() {
+        self.navigationController?.navigationBar.barTintColor = UIColor.primary()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+    }
+    
+    func setTabBarStyle() {
+        let tabBar = self.tabBarController?.tabBar
+
+        tabBar?.barTintColor = UIColor.secondary()
+        tabBar?.tintColor = UIColor.white
+        
+        // set selected background color of tab bar
+        let numberOfItems = CGFloat((tabBar?.items!.count)!)
+        let tabBarItemSize = CGSize(width: (tabBar?.frame.width)! / numberOfItems, height: (tabBar?.frame.height)!)
+        tabBar?.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.primary(), size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
+        
+        // remove default border
+        tabBar?.frame.size.width = self.view.frame.width + 4
+        tabBar?.frame.origin.x = -2
     }
 
 }

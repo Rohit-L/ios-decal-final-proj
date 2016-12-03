@@ -15,10 +15,6 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         print("View Loaded")
         
-        if ((FBSDKAccessToken.current()) != nil) {
-            print("YOU ARE LOGGED IN")
-        }
-        
         let loginButton = FBSDKLoginButton.init()
         loginButton.center = view.center
         loginButton.delegate = self
@@ -28,8 +24,11 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.backgroundColor = UIColor.primary()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("View Appeared!")
+    override func viewWillAppear(_ animated: Bool) {
+        if ((FBSDKAccessToken.current()) != nil) {
+            self.dismiss(animated: false, completion: nil)
+            print("Should have dismissed")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,13 +36,6 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /**
-     Sent to the delegate when the button was used to login.
-     - Parameter loginButton: the sender
-     - Parameter result: The results of the login
-     - Parameter error: The error (if any) from the login
-     */
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if (!result.isCancelled) {
             self.dismiss(animated: true, completion: nil)

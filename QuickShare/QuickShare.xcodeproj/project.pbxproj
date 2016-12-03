@@ -146,19 +146,14 @@
 		B503C3EF1DE4041900F3853A /* QuickShare */ = {
 			isa = PBXGroup;
 			children = (
+				B565B96B1DF3561B00639B47 /* Models */,
+				B565B96E1DF3565900639B47 /* Views */,
+				B565B96C1DF3562700639B47 /* Controllers */,
 				B501C15F1DF2AAD900669DB9 /* QuickShare.entitlements */,
-				B504486B1DF10ABF0048B794 /* Just.swift */,
-				B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */,
 				B503C3F01DE4041900F3853A /* AppDelegate.swift */,
-				B503C3F21DE4041900F3853A /* FeedViewController.swift */,
-				B565B9691DF2E18300639B47 /* Item.swift */,
-				B503C3F61DE4041900F3853A /* Main.storyboard */,
-				B5C10F341DF2496D00364D8C /* ProfileViewController.swift */,
-				B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */,
-				B5FBC1061DF0131F0052D46E /* ItemViewController.swift */,
 				B503C3F91DE4041900F3853A /* Assets.xcassets */,
-				B503C3FB1DE4041900F3853A /* LaunchScreen.storyboard */,
 				B503C3FE1DE4041900F3853A /* Info.plist */,
+				B565B96D1DF3564900639B47 /* Vendor */,
 			);
 			path = QuickShare;
 			sourceTree = "<group>";
@@ -179,6 +174,43 @@
 				B503C4141DE4041900F3853A /* Info.plist */,
 			);
 			path = QuickShareUITests;
+			sourceTree = "<group>";
+		};
+		B565B96B1DF3561B00639B47 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B565B9691DF2E18300639B47 /* Item.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B565B96C1DF3562700639B47 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B503C3F21DE4041900F3853A /* FeedViewController.swift */,
+				B5C10F341DF2496D00364D8C /* ProfileViewController.swift */,
+				B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */,
+				B5FBC1061DF0131F0052D46E /* ItemViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B565B96D1DF3564900639B47 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				B504486B1DF10ABF0048B794 /* Just.swift */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		B565B96E1DF3565900639B47 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B503C3F61DE4041900F3853A /* Main.storyboard */,
+				B503C3FB1DE4041900F3853A /* LaunchScreen.storyboard */,
+				B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F090C765EFB1F2138D3CAF8F /* Frameworks */ = {

@@ -13,25 +13,27 @@ class ItemViewController: UIViewController {
     var item: Item?
 
     @IBOutlet weak var itemImage: UIImageView!
-    //@IBOutlet weak var descriptionLabel: UILabel!
-    //@IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sellerName: UILabel!
+    @IBOutlet weak var itemPrice: UILabel!
+    @IBOutlet weak var itemViewNum: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.title = "Item"
-        self.itemImage.downloadedFrom(link: "https://cdn.pixabay.com/photo/2013/10/02/15/51/tree-189852_1280.jpg")
-        
-        //self.titleLabel.text = "This is the title!"
-        //self.descriptionLabel.text = "This is the description!"
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.itemImage.downloadedFrom(link: (item?.picture)!)
+        self.itemImage.downloadedFrom(link: (item?.picture)!)
         self.sellerName.text = item?.userName
+        self.itemPrice.text = "$" + String(format: "%.2f", (item?.price)!)
+        self.itemViewNum.text = "Viewed " + String((item?.viewNum)!) + " times"
+        self.titleLabel.text = item?.title
+        self.descriptionLabel.text = item?.description
     }
     
     override func viewDidAppear(_ animated: Bool) {
