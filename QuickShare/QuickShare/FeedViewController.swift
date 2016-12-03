@@ -8,13 +8,18 @@
 
 import UIKit
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    
+    lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         // Set status bar for entire application
+        //let vc = FBLoginViewController()
+        //self.present(vc, animated: false, completion: nil)
+        
         let view = UIView(frame:
             CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0)
         )
@@ -30,7 +35,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tabBarController?.tabBar.barTintColor = UIColor.secondary()
         self.tabBarController?.tabBar.tintColor = UIColor.white
         
-        // set red as selected background color
+        // set selected background color of tab bar
         let tabBar = self.tabBarController?.tabBar
         let numberOfItems = CGFloat((tabBar?.items!.count)!)
         let tabBarItemSize = CGSize(width: (tabBar?.frame.width)! / numberOfItems, height: (tabBar?.frame.height)!)
@@ -40,11 +45,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tabBar?.frame.size.width = self.view.frame.width + 4
         tabBar?.frame.origin.x = -2
         
+        searchBar.placeholder = "Search for a specific item."
+        searchBar.delegate = self
+        self.navigationItem.titleView = searchBar
         
         self.title = "Feed"
         self.view.backgroundColor = .white
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         self.tabBarItem.title = "Feed"
         
@@ -58,8 +66,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let item = json?[i] as! [String:Any]
                     self.titles.append(item["title"]! as! String)
                     self.descriptions.append(item["description"]! as! String)
-                    
-                    self.tableView.reloadData()
                     i += 1
                 }
                 
@@ -86,12 +92,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /* TableView Delegate Methods */
     var titles: [String] = []
     var descriptions: [String] = []
     
-    // Don't forget to enter this in IB also
     let cellReuseIdentifier = "cell"
-    
     @IBOutlet var tableView: UITableView!
     
     // number of rows in table view
@@ -107,10 +113,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.label.text = self.titles[indexPath.row]
         cell.productDescription.text = self.descriptions[indexPath.row]
         
-//        cell.preservesSuperviewLayoutMargins = false
-//        cell.separatorInset = UIEdgeInsets.zero
-//        cell.layoutMargins = UIEdgeInsets.zero
-        
         return cell
     }
     
@@ -118,6 +120,27 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("You tapped cell number \(indexPath.row).")
+    }
+    
+    /* SearchBar Delegate Methods */
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
 }
