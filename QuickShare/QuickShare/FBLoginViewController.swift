@@ -8,26 +8,30 @@
 
 import UIKit
 import FBSDKLoginKit
+import FacebookCore
 
 class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View Loaded")
+        // Do any additional setup after loading the view.
+
+        // Set Background color
+        self.view.backgroundColor = UIColor.primary()
         
+        // Create and add login button to view
         let loginButton = FBSDKLoginButton.init()
+        loginButton.readPermissions = ["public_profile", "email"];
         loginButton.center = view.center
         loginButton.delegate = self
         view.addSubview(loginButton)
-        // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = UIColor.primary()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if ((FBSDKAccessToken.current()) != nil) {
             self.dismiss(animated: false, completion: nil)
-            print("Should have dismissed")
         }
     }
 
@@ -36,15 +40,50 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: FBSDKLoginButtonDelegate Methods
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if (!result.isCancelled) {
-            self.dismiss(animated: true, completion: nil)
+            
+            let connection = GraphRequestConnection()
+            connection.add(GraphRequest(graphPath: "me/", parameters: ["fields":"email,name"], accessToken: AccessToken.current, httpMethod: GraphRequestHTTPMethod(rawValue: "GET")!, apiVersion: GraphAPIVersion.defaultVersion)) { httpResponse, result in
+                switch result {
+                case .success(let response):
+                    
+                    let email = response.dictionaryValue?["email"] as! String
+                    let name = response.dictionaryValue?["name"] as! String
+                    let id = response.dictionaryValue?["id"] as! String
+                    
+                    let connection = GraphRequestConnection()
+                    connection.add(GraphRequest(graphPath: "me/picture?type=large&redirect=false")) { httpResponse, result in
+                        switch result {
+                        case .success(let response):
+                            
+                            let picture = (response.dictionaryValue?["data"] as! [String: Any?])["url"] as! String
+                            GlobalState.user = User(id: id, name: name, picture: picture, email: email)
+                            
+                            // Send request to create user if user has not already been created
+                            let url = "https://quickshareios.herokuapp.com/user/create"
+                            Just.post(url, params: ["id": id, "name": name, "email": email], data: [:])
+                            
+                            self.dismiss(animated: true, completion: nil)
+                        case .failed(let error):
+                            print("Graph Request Failed: \(error)")
+                        }
+                    }
+                    connection.start()
+                    
+                case .failed(let error):
+                    print("Graph Request Failed: \(error)")
+                }
+            }
+            connection.start()
         }
     }
     
 
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("LoggedOut")
+        return
     }
 
     /*

@@ -13,6 +13,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
     
+    // MARK: UIViewController Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,6 +39,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        // Get items from server
         Just.get("https://quickshareios.herokuapp.com/item/read") { r in
             if r.ok { /* success! */
                 let data = r.text?.data(using: .utf8)!
@@ -51,10 +54,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let picture = item["picture"] as! String
                     let viewNum = item["viewNum"] as! Int
                     let userName = (item["user"] as! [String: Any])["name"] as! String
-                    let uid = Int((item["user"] as! [String: Any])["uid"] as! String)
+                    let item_uid = item["user_uid"] as! String
                     
-                    let itemObject = Item(title: title, description: description, price: price!, picture: picture, viewNum: viewNum, userName: userName, uid: uid!)
-                    self.items.append(itemObject)
+                    let itemObject = Item(title: title, description: description, price: price!, picture: picture, viewNum: viewNum, userName: userName, uid: item_uid)
+                    GlobalState.items.append(itemObject)
                     i += 1
                 }
                 
@@ -87,7 +90,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "ShowItemSegue" {
             let cell = sender as! ItemTableViewCell
             let indexPath = self.tableView.indexPath(for: cell)
-            (segue.destination as! ItemViewController).item = self.items[(indexPath?.row)!]
+            (segue.destination as! ItemViewController).item = GlobalState.items[(indexPath?.row)!]
         }
     }
 
@@ -97,22 +100,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    /* TableView Delegate Methods */
-    var items: [Item] = []
+    // MARK: TableView Delegate Methods
     
     let cellReuseIdentifier = "cell"
     @IBOutlet var tableView: UITableView!
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return GlobalState.items.count
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:ItemTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! ItemTableViewCell
-        let item = self.items[indexPath.row]
+        let item = GlobalState.items[indexPath.row]
         cell.product.downloadedFrom(link: item.picture)
         cell.label.text = item.title
         cell.productDescription.text = item.description
@@ -126,7 +128,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("You tapped cell number \(indexPath.row).")
     }
     
-    /* SearchBar Delegate Methods */
+    // MARK: SearchBar Delegate Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
     }
@@ -147,7 +149,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchBar.resignFirstResponder()
     }
     
-    /* Helper Methods */
+    // MARK: Helper Methods
     func setNavigationBarStyle() {
         self.navigationController?.navigationBar.barTintColor = UIColor.primary()
         self.navigationController?.navigationBar.isTranslucent = false

@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKCoreKit
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,6 +38,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
+        
+        let connection = GraphRequestConnection()
+        connection.add(GraphRequest(graphPath: "me/", parameters: ["fields":"email,name"], accessToken: AccessToken.current, httpMethod: GraphRequestHTTPMethod(rawValue: "GET")!, apiVersion: GraphAPIVersion.defaultVersion)) { httpResponse, result in
+            switch result {
+            case .success(let response):
+                
+                let email = response.dictionaryValue?["email"] as! String
+                let name = response.dictionaryValue?["name"] as! String
+                let id = response.dictionaryValue?["id"] as! String
+                
+                let connection = GraphRequestConnection()
+                connection.add(GraphRequest(graphPath: "me/picture?type=large&redirect=false")) { httpResponse, result in
+                    switch result {
+                    case .success(let response):
+                        
+                        let picture = (response.dictionaryValue?["data"] as! [String: Any?])["url"] as! String
+                        GlobalState.user = User(id: id, name: name, picture: picture, email: email)
+                        
+                        // Send request to create user if user has not already been created
+                        let url = "https://quickshareios.herokuapp.com/user/create"
+                        Just.post(url, params: ["id": id, "name": name, "email": email], data: [:])
+                        
+                    case .failed(let error):
+                        print("Graph Request Failed: \(error)")
+                    }
+                }
+                connection.start()
+                
+            case .failed(let error):
+                print("Graph Request Failed: \(error)")
+            }
+        }
+        connection.start()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -61,6 +95,11 @@ extension UIColor {
     class func secondary() -> UIColor {
         return UIColor(red: CGFloat(241 / 255.0), green: CGFloat(241 / 255.0), blue: CGFloat(243 / 255.0), alpha: CGFloat(1))
     }
+}
+
+struct GlobalState {
+    static var user: User? = nil
+    static var items: [Item] = []
 }
 
 /* Extension to load image from URL into UIImageView

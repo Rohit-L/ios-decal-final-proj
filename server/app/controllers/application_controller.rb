@@ -1,6 +1,10 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+require 'cloudinary'
+require 'cloudinary/uploader'
+require 'cloudinary/utils'
 
+class ApplicationController < ActionController::Base
+
+  # /item/create
   def create_item
   	if User.all.empty?
   		User.create(name: "Rohit Lalchandani", uid: "1")
@@ -12,21 +16,39 @@ class ApplicationController < ActionController::Base
   		description: "This is a picture of a landscape.",
   		viewNum: 34,
   		price: "20",
-  		user: User.first
+  		user: User.first,
+      user_uid: User.first.uid
   	)
 
   	head :ok, content_type: "text/html"
   end
 
+  # /item/read
   def read_item
   	render json: Item.all.to_json(include: [:user])
   end
 
+  # ?
   def update_item
   	head :ok, content_type: "text/html"
   end
 
+  # ?
   def delete_item
   	head :ok, content_type: "text/html"
   end
+
+  # /user/create
+  def create_user
+    if !User.exists?(uid: params['id'])
+      User.create(name: params['name'], uid: params["id"], email: params['email'])
+    end
+    head :ok, content_type: "text/html"
+  end
+
+  def upload_image
+    puts Cloudinary::Uploader.upload(params["file"].path)
+    head :ok, content_type: "text/html"
+  end
+
 end

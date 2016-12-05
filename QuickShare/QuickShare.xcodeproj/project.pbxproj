@@ -21,8 +21,13 @@
 		B503C4131DE4041900F3853A /* QuickShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4121DE4041900F3853A /* QuickShareUITests.swift */; };
 		B504486C1DF10ABF0048B794 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504486B1DF10ABF0048B794 /* Just.swift */; };
 		B565B96A1DF2E18300639B47 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565B9691DF2E18300639B47 /* Item.swift */; };
+		B57C95B71DF5126400132200 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C95B61DF5126400132200 /* ItemCollectionViewCell.swift */; };
+		B5A84FE61DF381B400E359DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A84FE51DF381B400E359DF /* User.swift */; };
 		B5C10F331DF241BE00364D8C /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */; };
 		B5C10F351DF2496D00364D8C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C10F341DF2496D00364D8C /* ProfileViewController.swift */; };
+		B5DC9F131DF552300049017E /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC9F121DF552300049017E /* AddImageViewController.swift */; };
+		B5DC9F151DF556740049017E /* Fusuma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DC9F141DF556740049017E /* Fusuma.framework */; };
+		B5DC9F171DF55B9F0049017E /* libCloudinary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DC9F161DF55B9F0049017E /* libCloudinary.a */; };
 		B5FBC1051DF00F280052D46E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */; };
 		B5FBC1071DF0131F0052D46E /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBC1061DF0131F0052D46E /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
@@ -86,8 +91,20 @@
 		B503C4141DE4041900F3853A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B504486B1DF10ABF0048B794 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 		B565B9691DF2E18300639B47 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B57C95B61DF5126400132200 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5A84FE51DF381B400E359DF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		B5C10F341DF2496D00364D8C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B5DC9F121DF552300049017E /* AddImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
+		B5DC9F141DF556740049017E /* Fusuma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fusuma.framework; path = Carthage/Build/iOS/Fusuma.framework; sourceTree = "<group>"; };
+		B5DC9F161DF55B9F0049017E /* libCloudinary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCloudinary.a; path = cloudinary/libCloudinary.a; sourceTree = "<group>"; };
+		B5DC9F191DF55BB60049017E /* CLCloudinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCloudinary.h; sourceTree = "<group>"; };
+		B5DC9F1A1DF55BB60049017E /* CLEagerTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEagerTransformation.h; sourceTree = "<group>"; };
+		B5DC9F1B1DF55BB60049017E /* CLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLayer.h; sourceTree = "<group>"; };
+		B5DC9F1C1DF55BB60049017E /* Cloudinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloudinary.h; sourceTree = "<group>"; };
+		B5DC9F1D1DF55BB60049017E /* CLTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTransformation.h; sourceTree = "<group>"; };
+		B5DC9F1E1DF55BB60049017E /* CLUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUploader.h; sourceTree = "<group>"; };
+		B5DC9F201DF55F380049017E /* EL_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EL_Bridging_Header.h; path = QuickShare/EL_Bridging_Header.h; sourceTree = "<group>"; };
 		B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		B5FBC1061DF0131F0052D46E /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,8 +117,10 @@
 				B501C1571DF2A8B300669DB9 /* Bolts.framework in Frameworks */,
 				B501C1581DF2A8B300669DB9 /* FacebookCore.framework in Frameworks */,
 				B501C1591DF2A8B300669DB9 /* FBSDKCoreKit.framework in Frameworks */,
+				B5DC9F171DF55B9F0049017E /* libCloudinary.a in Frameworks */,
 				B501C15B1DF2A8C500669DB9 /* FacebookLogin.framework in Frameworks */,
 				B501C15D1DF2A8CC00669DB9 /* FBSDKLoginKit.framework in Frameworks */,
+				B5DC9F151DF556740049017E /* Fusuma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,10 +144,12 @@
 		B503C3E41DE4041900F3853A = {
 			isa = PBXGroup;
 			children = (
+				B5DC9F201DF55F380049017E /* EL_Bridging_Header.h */,
 				B503C3EF1DE4041900F3853A /* QuickShare */,
 				B503C4061DE4041900F3853A /* QuickShareTests */,
 				B503C4111DE4041900F3853A /* QuickShareUITests */,
 				B503C3EE1DE4041900F3853A /* Products */,
+				B5DC9F181DF55BB60049017E /* Cloudinary */,
 				F090C765EFB1F2138D3CAF8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -179,6 +200,7 @@
 		B565B96B1DF3561B00639B47 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5A84FE51DF381B400E359DF /* User.swift */,
 				B565B9691DF2E18300639B47 /* Item.swift */,
 			);
 			name = Models;
@@ -187,6 +209,7 @@
 		B565B96C1DF3562700639B47 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5DC9F121DF552300049017E /* AddImageViewController.swift */,
 				B503C3F21DE4041900F3853A /* FeedViewController.swift */,
 				B5C10F341DF2496D00364D8C /* ProfileViewController.swift */,
 				B5C10F321DF241BE00364D8C /* FBLoginViewController.swift */,
@@ -207,15 +230,32 @@
 			isa = PBXGroup;
 			children = (
 				B503C3F61DE4041900F3853A /* Main.storyboard */,
+				B57C95B61DF5126400132200 /* ItemCollectionViewCell.swift */,
 				B503C3FB1DE4041900F3853A /* LaunchScreen.storyboard */,
 				B5FBC1041DF00F280052D46E /* ItemTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
+		B5DC9F181DF55BB60049017E /* Cloudinary */ = {
+			isa = PBXGroup;
+			children = (
+				B5DC9F191DF55BB60049017E /* CLCloudinary.h */,
+				B5DC9F1A1DF55BB60049017E /* CLEagerTransformation.h */,
+				B5DC9F1B1DF55BB60049017E /* CLLayer.h */,
+				B5DC9F1C1DF55BB60049017E /* Cloudinary.h */,
+				B5DC9F1D1DF55BB60049017E /* CLTransformation.h */,
+				B5DC9F1E1DF55BB60049017E /* CLUploader.h */,
+			);
+			name = Cloudinary;
+			path = cloudinary/include/Cloudinary;
+			sourceTree = "<group>";
+		};
 		F090C765EFB1F2138D3CAF8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5DC9F161DF55B9F0049017E /* libCloudinary.a */,
+				B5DC9F141DF556740049017E /* Fusuma.framework */,
 				B501C15C1DF2A8CC00669DB9 /* FBSDKLoginKit.framework */,
 				B501C15A1DF2A8C500669DB9 /* FacebookLogin.framework */,
 				B501C1541DF2A8B300669DB9 /* Bolts.framework */,
@@ -381,6 +421,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FacebookLogin.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Fusuma.framework",
 			);
 			outputPaths = (
 			);
@@ -397,9 +438,12 @@
 			files = (
 				B504486C1DF10ABF0048B794 /* Just.swift in Sources */,
 				B5FBC1051DF00F280052D46E /* ItemTableViewCell.swift in Sources */,
+				B5DC9F131DF552300049017E /* AddImageViewController.swift in Sources */,
 				B5C10F331DF241BE00364D8C /* FBLoginViewController.swift in Sources */,
 				B5FBC1071DF0131F0052D46E /* ItemViewController.swift in Sources */,
 				B565B96A1DF2E18300639B47 /* Item.swift in Sources */,
+				B57C95B71DF5126400132200 /* ItemCollectionViewCell.swift in Sources */,
+				B5A84FE61DF381B400E359DF /* User.swift in Sources */,
 				B5C10F351DF2496D00364D8C /* ProfileViewController.swift in Sources */,
 				B503C3F11DE4041900F3853A /* AppDelegate.swift in Sources */,
 				B503C3F31DE4041900F3853A /* FeedViewController.swift in Sources */,
@@ -518,8 +562,14 @@
 				);
 				INFOPLIST_FILE = QuickShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/cloudinary",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = QuickShare/EL_Bridging_Header.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

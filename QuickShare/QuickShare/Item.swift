@@ -11,10 +11,10 @@ class Item {
     var price: Double
     var viewNum: Int
     var userName: String
-    var uid: Int
+    var uid: String
     var picture: String
     
-    init(title: String, description: String, price: Double, picture: String, viewNum: Int, userName: String, uid: Int) {
+    init(title: String, description: String, price: Double, picture: String, viewNum: Int, userName: String, uid: String) {
         self.title = title
         self.description = description
         self.price = price
