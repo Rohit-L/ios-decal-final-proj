@@ -85,7 +85,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="0.40784313729999999" green="0.6588235294" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.0" green="0.62352941179999999" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="Kd5-Vz-O0O" firstAttribute="centerX" secondItem="eKj-iQ-Fvq" secondAttribute="centerX" id="BiC-dM-bYl"/>
                                                                         <constraint firstItem="Kd5-Vz-O0O" firstAttribute="centerY" secondItem="eKj-iQ-Fvq" secondAttribute="centerY" id="PE4-vD-8Te"/>
@@ -208,11 +208,18 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ElB-0P-ofq">
+                                                        <rect key="frame" x="339" y="15" width="20" height="20"/>
+                                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="ElB-0P-ofq" firstAttribute="top" secondItem="kId-on-x9x" secondAttribute="top" constant="15" id="1vR-MH-ZDe"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ElB-0P-ofq" secondAttribute="bottom" constant="15" id="H6Q-Bh-FSs"/>
                                                     <constraint firstItem="jPd-pl-vtR" firstAttribute="centerY" secondItem="kId-on-x9x" secondAttribute="centerY" id="JdK-uF-NW8"/>
                                                     <constraint firstItem="YVu-Uc-P3Y" firstAttribute="centerY" secondItem="kId-on-x9x" secondAttribute="centerY" id="Oo1-Dx-ZNF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ElB-0P-ofq" secondAttribute="trailing" constant="16" id="Pdc-RT-wj0"/>
                                                     <constraint firstItem="jPd-pl-vtR" firstAttribute="leading" secondItem="kId-on-x9x" secondAttribute="leading" constant="16" id="Ry8-aP-Q63"/>
                                                     <constraint firstAttribute="trailing" secondItem="YVu-Uc-P3Y" secondAttribute="trailing" constant="16" id="leH-Kq-qmo"/>
                                                     <constraint firstAttribute="height" constant="50" id="zbK-VT-FCo"/>
@@ -349,6 +356,7 @@
                         <outlet property="sellerEmail" destination="mbZ-T4-umN" id="Z4H-Ye-WZf"/>
                         <outlet property="sellerName" destination="yhr-Qf-wd2" id="2WV-37-l4F"/>
                         <outlet property="titleLabel" destination="9Dh-Of-sAV" id="2Ju-w7-Wrx"/>
+                        <outlet property="viewNumActivityIndicator" destination="ElB-0P-ofq" id="6zy-6s-AZY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ki5-GR-77D" userLabel="First Responder" sceneMemberID="firstResponder"/>

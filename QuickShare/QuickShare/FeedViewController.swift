@@ -8,10 +8,12 @@
 
 import UIKit
 import FBSDKCoreKit
+import RevealingSplashView
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+    var splashView: RevealingSplashView?
     
     // MARK: UIViewController Methods
     
@@ -39,7 +41,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.view.backgroundColor = .white
         self.tableView.delegate = self
-        self.tableView.dataSource = self        
+        self.tableView.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +52,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "login")
             self.present(vc, animated: true, completion: nil)
+        }
+        if GlobalState.items.count == 0 {
+        //Initialize a revealing Splash with with the iconImage, the initial size and the background color
+            splashView = RevealingSplashView(iconImage: UIImage(named: "iconSmall")!,iconInitialSize: CGSize(width: 70, height: 70), backgroundColor: UIColor(red:0.094, green:0.624, blue:0.710, alpha:1.0))
+            splashView?.animationType = .heartBeat
+            let window = UIApplication.shared.keyWindow
+            window?.addSubview(splashView!)
+            splashView?.startAnimation() {
+                print("Completed")
+            }
         }
     }
     
@@ -222,6 +235,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func reloadData() {
         DispatchQueue.main.async(execute: { () -> Void in
+            self.splashView?.heartAttack = true
             self.tableView.reloadData()
         })
     }

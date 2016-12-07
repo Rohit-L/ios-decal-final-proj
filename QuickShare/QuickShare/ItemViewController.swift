@@ -19,6 +19,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemViewNum: UILabel!
     @IBOutlet weak var sellerEmail: UIButton!
+    @IBOutlet weak var viewNumActivityIndicator: UIActivityIndicatorView!
     
     @IBAction func emailTapped(_ sender: Any) {
         let email = sellerEmail.titleLabel?.text!
@@ -40,6 +41,35 @@ class ItemViewController: UIViewController {
             UIApplication.shared.open(NSURL(string: "https://www.facebook.com/" + (item?.post_id)!)! as URL, options: [:], completionHandler: nil)
         }
         
+        Just.post("https://quickshareios.herokuapp.com/item/increment", params: ["item_id": (item?.item_id)!], data: [:]) { r in
+            if r.ok {
+                print(r.text)
+                let data = r.text?.data(using: .utf8)!
+                let item = try? JSONSerialization.jsonObject(with: data!) as! [String: Any]
+                if item != nil {
+                    let item_id = item?["id"] as! Int
+                    let title = item?["title"] as! String
+                    let description = item?["description"] as! String
+                    let price = item?["price"] as! String
+                    let picture = item?["picture"] as! String
+                    let viewNum = item?["viewNum"] as! Int
+                    let userName = (item?["user"] as! [String: Any])["name"] as! String
+                    let email = (item?["user"] as! [String: Any])["email"] as! String
+                    let item_uid = item?["user_uid"] as! String
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.viewNumActivityIndicator.stopAnimating()
+                        self.itemViewNum.text = "Viewed " + String(viewNum) + " times"
+                        self.item?.viewNum = viewNum
+                    })
+
+                }
+
+            }
+        }
+        
+        self.itemViewNum.text = ""
+        
         if (item?.picture) != nil {
           self.itemImage.downloadedFrom(link: (item?.picture)!)
         } else {
@@ -59,7 +89,7 @@ class ItemViewController: UIViewController {
             }
         }
 
-        self.itemViewNum.text = "Viewed " + String((item?.viewNum)!) + " times"
+        //self.itemViewNum.text = "Viewed " + String((item?.viewNum)!) + " times"
         self.titleLabel.text = item?.title
         self.descriptionLabel.text = item?.description
         self.sellerEmail.setTitle(item?.email, for: .normal)

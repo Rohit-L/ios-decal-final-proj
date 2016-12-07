@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
   	head :ok, content_type: "text/html"
   end
 
+  def increment_item
+    puts params
+    item = Item.find(params["item_id"])
+    item.viewNum = item.viewNum + 1
+    item.save!
+    render json: item.to_json(include: [:user])
+  end
+
   # ?
   def delete_item
   	head :ok, content_type: "text/html"

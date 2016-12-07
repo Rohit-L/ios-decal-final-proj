@@ -20,6 +20,7 @@
 		B503C4081DE4041900F3853A /* QuickShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4071DE4041900F3853A /* QuickShareTests.swift */; };
 		B503C4131DE4041900F3853A /* QuickShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503C4121DE4041900F3853A /* QuickShareUITests.swift */; };
 		B504486C1DF10ABF0048B794 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504486B1DF10ABF0048B794 /* Just.swift */; };
+		B55C2E1D1DF7EB5000A46C63 /* RevealingSplashView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55C2E1C1DF7EB5000A46C63 /* RevealingSplashView.framework */; };
 		B565B96A1DF2E18300639B47 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565B9691DF2E18300639B47 /* Item.swift */; };
 		B57C95B71DF5126400132200 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C95B61DF5126400132200 /* ItemCollectionViewCell.swift */; };
 		B5A84FE61DF381B400E359DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A84FE51DF381B400E359DF /* User.swift */; };
@@ -89,6 +90,7 @@
 		B503C4121DE4041900F3853A /* QuickShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickShareUITests.swift; sourceTree = "<group>"; };
 		B503C4141DE4041900F3853A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B504486B1DF10ABF0048B794 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
+		B55C2E1C1DF7EB5000A46C63 /* RevealingSplashView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevealingSplashView.framework; path = Carthage/Build/iOS/RevealingSplashView.framework; sourceTree = "<group>"; };
 		B565B9691DF2E18300639B47 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B57C95B61DF5126400132200 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5A84FE51DF381B400E359DF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				B501C15B1DF2A8C500669DB9 /* FacebookLogin.framework in Frameworks */,
 				B501C15D1DF2A8CC00669DB9 /* FBSDKLoginKit.framework in Frameworks */,
 				B5DC9F151DF556740049017E /* Fusuma.framework in Frameworks */,
+				B55C2E1D1DF7EB5000A46C63 /* RevealingSplashView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +231,7 @@
 		F090C765EFB1F2138D3CAF8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B55C2E1C1DF7EB5000A46C63 /* RevealingSplashView.framework */,
 				B5DC9F141DF556740049017E /* Fusuma.framework */,
 				B501C15C1DF2A8CC00669DB9 /* FBSDKLoginKit.framework */,
 				B501C15A1DF2A8C500669DB9 /* FacebookLogin.framework */,
@@ -395,6 +399,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FacebookLogin.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Fusuma.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RevealingSplashView.framework",
 			);
 			outputPaths = (
 			);
@@ -530,15 +535,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QuickShare/Frameworks",
-					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = QuickShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/cloudinary",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rohit.QuickShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
