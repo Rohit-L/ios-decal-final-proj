@@ -1,23 +1,28 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2E018143ADEC27EBACE3B2F06095769B86EF4BBB+++98BAF28",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "0DCFF0852789D5A49F67B6C8EA2636735D303748" : 9223372036854775807,
-    "A11A2549D5CB40607BCC5ED8DF4A3BF3E6CE30E2" : 9223372036854775807,
-    "A20D666FF4B08EFE53F147818C2D4D17E2242912" : 9223372036854775807,
-    "D7C16E61D8778BAFAAB858583C3B42A17C53EF7C" : 9223372036854775807,
-    "61C4B9E3B61282127C102C87B46B8CDE985974AE" : 9223372036854775807,
-    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : 9223372036854775807
+    "0DCFF0852789D5A49F67B6C8EA2636735D303748+++9ABB9C9" : 9223372036854775807,
+    "0DCFF0852789D5A49F67B6C8EA2636735D303748+++2477ADF" : 9223372036854775807,
+    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025+++A25DC4D" : 9223372036854775807,
+    "A11A2549D5CB40607BCC5ED8DF4A3BF3E6CE30E2+++A78DA51" : 9223372036854775807,
+    "D7C16E61D8778BAFAAB858583C3B42A17C53EF7C+++3B590ED" : 9223372036854775807,
+    "61C4B9E3B61282127C102C87B46B8CDE985974AE+++5776D51" : 9223372036854775807,
+    "2E018143ADEC27EBACE3B2F06095769B86EF4BBB+++98BAF28" : 9223372036854775807,
+    "A20D666FF4B08EFE53F147818C2D4D17E2242912+++7A86656" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A518438C-0E8E-4687-995F-3013028BED00",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "0DCFF0852789D5A49F67B6C8EA2636735D303748" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/Bolts-IOS\/Vendor\/xctoolchain\/",
-    "A11A2549D5CB40607BCC5ED8DF4A3BF3E6CE30E2" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/vendor\/OHHTTPStubs\/",
-    "A20D666FF4B08EFE53F147818C2D4D17E2242912" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/",
-    "D7C16E61D8778BAFAAB858583C3B42A17C53EF7C" : "facebook-sdk-swift\/",
-    "61C4B9E3B61282127C102C87B46B8CDE985974AE" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/Bolts-IOS\/",
-    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/vendor\/OCMock\/"
+    "0DCFF0852789D5A49F67B6C8EA2636735D303748+++9ABB9C9" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/Bolts-IOS\/Vendor\/xctoolchain\/",
+    "0DCFF0852789D5A49F67B6C8EA2636735D303748+++2477ADF" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/Bolts-IOS\/Vendor\/xctoolchain\/",
+    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025+++A25DC4D" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/vendor\/OCMock\/",
+    "A11A2549D5CB40607BCC5ED8DF4A3BF3E6CE30E2+++A78DA51" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/vendor\/OHHTTPStubs\/",
+    "D7C16E61D8778BAFAAB858583C3B42A17C53EF7C+++3B590ED" : "facebook-sdk-swift\/",
+    "61C4B9E3B61282127C102C87B46B8CDE985974AE+++5776D51" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/Bolts-IOS\/",
+    "2E018143ADEC27EBACE3B2F06095769B86EF4BBB+++98BAF28" : "QuickShare\/",
+    "A20D666FF4B08EFE53F147818C2D4D17E2242912+++7A86656" : "facebook-sdk-swift\/Carthage\/Checkouts\/facebook-ios-sdk\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "QuickShare",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -26,37 +31,42 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ParsePlatform\/xctoolchain.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DCFF0852789D5A49F67B6C8EA2636735D303748"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DCFF0852789D5A49F67B6C8EA2636735D303748+++2477ADF"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ParsePlatform\/xctoolchain.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DCFF0852789D5A49F67B6C8EA2636735D303748"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DCFF0852789D5A49F67B6C8EA2636735D303748+++9ABB9C9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Rohit-L\/ios-decal-final-proj.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2E018143ADEC27EBACE3B2F06095769B86EF4BBB+++98BAF28"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/BoltsFramework\/Bolts-iOS.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "61C4B9E3B61282127C102C87B46B8CDE985974AE"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "61C4B9E3B61282127C102C87B46B8CDE985974AE+++5776D51"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AliSoftware\/OHHTTPStubs.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A11A2549D5CB40607BCC5ED8DF4A3BF3E6CE30E2"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A11A2549D5CB40607BCC5ED8DF4A3BF3E6CE30E2+++A78DA51"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/facebook\/facebook-ios-sdk.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A20D666FF4B08EFE53F147818C2D4D17E2242912"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A20D666FF4B08EFE53F147818C2D4D17E2242912+++7A86656"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/facebook\/facebook-sdk-swift.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D7C16E61D8778BAFAAB858583C3B42A17C53EF7C"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D7C16E61D8778BAFAAB858583C3B42A17C53EF7C+++3B590ED"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erikdoe\/ocmock",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025+++A25DC4D"
     }
   ]
 }

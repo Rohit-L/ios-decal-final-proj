@@ -8,13 +8,17 @@
 class Item {
     var title: String
     var description: String
-    var price: Double
+    var price: String
     var viewNum: Int
     var userName: String
     var uid: String
-    var picture: String
+    var picture: String?
+    var isFB: Bool
+    var post_id: String?
+    var email: String
+    var item_id: String?
     
-    init(title: String, description: String, price: Double, picture: String, viewNum: Int, userName: String, uid: String) {
+    init(title: String, description: String, price: String, picture: String?, viewNum: Int, userName: String, uid: String, isFB: Bool, post_id: String?, email: String, item_id: Int?) {
         self.title = title
         self.description = description
         self.price = price
@@ -22,5 +26,14 @@ class Item {
         self.userName = userName
         self.uid = uid
         self.picture = picture
+        self.isFB = isFB
+        self.post_id = post_id
+        self.email = email
+        if item_id != nil {
+            self.item_id = String(item_id!)
+        } else {
+            self.item_id = nil
+        }
+        
     }
 }

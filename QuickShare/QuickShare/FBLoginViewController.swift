@@ -65,7 +65,7 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             // Send request to create user if user has not already been created
                             let url = "https://quickshareios.herokuapp.com/user/create"
                             Just.post(url, params: ["id": id, "name": name, "email": email], data: [:])
-                            
+                            (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: nil, identifier: nil)
                             self.dismiss(animated: true, completion: nil)
                         case .failed(let error):
                             print("Graph Request Failed: \(error)")

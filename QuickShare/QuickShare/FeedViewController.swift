@@ -18,6 +18,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        (UIApplication.shared.delegate as! AppDelegate).feedVC = self
+        
         let view = UIView(frame:
             CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0)
         )
@@ -37,40 +39,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.view.backgroundColor = .white
         self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        // Get items from server
-        Just.get("https://quickshareios.herokuapp.com/item/read") { r in
-            if r.ok { /* success! */
-                let data = r.text?.data(using: .utf8)!
-                let json = try? JSONSerialization.jsonObject(with: data!) as! [Any]
-                
-                var i = 0
-                while i < (json?.count)! {
-                    let item = json?[i] as! [String:Any]
-                    let title = item["title"] as! String
-                    let description = item["description"] as! String
-                    let price = Double(item["price"] as! String)
-                    let picture = item["picture"] as! String
-                    let viewNum = item["viewNum"] as! Int
-                    let userName = (item["user"] as! [String: Any])["name"] as! String
-                    let item_uid = item["user_uid"] as! String
-                    
-                    let itemObject = Item(title: title, description: description, price: price!, picture: picture, viewNum: viewNum, userName: userName, uid: item_uid)
-                    GlobalState.items.append(itemObject)
-                    i += 1
-                }
-                
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.tableView.reloadData()
-                })
-
-            }
-        }
-        
+        self.tableView.dataSource = self        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        reloadData()
         // Set status bar for entire application
         if ((FBSDKAccessToken.current()) == nil) {
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -84,13 +57,39 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "ShowItemSegue" {
+            print("Should perform segue called")
+            let cell = sender as! ItemTableViewCell
+            let indexPath = self.tableView.indexPath(for: cell)
+            
+            let item: Item
+            if self.mode == "normal" {
+                item = GlobalState.items[(indexPath?.row)!]
+            } else {
+                item = self.searchItems[(indexPath?.row)!]
+            }
+            
+            if (item.isFB) {
+                UIApplication.shared.open(NSURL(string: "https://www.facebook.com/" + (item.post_id)!)! as URL, options: [:], completionHandler: nil)
+                return false
+            } else {
+                return true
+            }
+        }
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        print("Now Transitioning")
         if segue.identifier == "ShowItemSegue" {
             let cell = sender as! ItemTableViewCell
             let indexPath = self.tableView.indexPath(for: cell)
-            (segue.destination as! ItemViewController).item = GlobalState.items[(indexPath?.row)!]
+            if self.mode == "normal" {
+                (segue.destination as! ItemViewController).item = GlobalState.items[(indexPath?.row)!]
+            } else {
+                (segue.destination as! ItemViewController).item = self.searchItems[(indexPath?.row)!]
+            }
         }
     }
 
@@ -105,27 +104,56 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let cellReuseIdentifier = "cell"
     @IBOutlet var tableView: UITableView!
     
+    var searchItems: [Item] = []
+    var mode: String = "normal"
+    
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GlobalState.items.count
+        if self.mode == "normal" {
+            return GlobalState.items.count
+        } else {
+            return self.searchItems.count
+        }
+        
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:ItemTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! ItemTableViewCell
-        let item = GlobalState.items[indexPath.row]
-        cell.product.downloadedFrom(link: item.picture)
+        
+        let item: Item
+        if self.mode == "normal" {
+            item = GlobalState.items[indexPath.row]
+        } else {
+            item = self.searchItems[indexPath.row]
+        }
+        
+        cell.product.image = nil
+        if item.picture != nil {
+            cell.product.downloadedFrom(link: item.picture!)
+        } else {
+            cell.product.image = UIImage(named: "NoImageFound")
+        }
+        
         cell.label.text = item.title
         cell.productDescription.text = item.description
         
+        if item.price.lowercased().range(of: "free") != nil {
+            cell.price.text = item.price
+        } else {
+            if item.price.range(of: "$") != nil {
+                cell.price.text = item.price
+            } else {
+                cell.price.text = "$" + item.price
+            }
+        }
         return cell
     }
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("You tapped cell number \(indexPath.row).")
     }
     
     // MARK: SearchBar Delegate Methods
@@ -143,10 +171,29 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        searchBar.text = ""
+        setSearch(term: searchBar.text!)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        setSearch(term: searchBar.text!)
+    }
+    
+    func setSearch(term: String) {
+        self.searchItems = []
+        if term == "" {
+            self.mode = "normal"
+        } else {
+            self.mode = "search"
+            for item in GlobalState.items {
+                if item.title.range(of: term) != nil {
+                    print(item.title)
+                    self.searchItems.append(item)
+                }
+            }
+        }
+        self.tableView.reloadData()
     }
     
     // MARK: Helper Methods
@@ -171,6 +218,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // remove default border
         tabBar?.frame.size.width = self.view.frame.width + 4
         tabBar?.frame.origin.x = -2
+    }
+    
+    func reloadData() {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.tableView.reloadData()
+        })
     }
 
 }

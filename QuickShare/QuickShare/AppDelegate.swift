@@ -14,6 +14,8 @@ import FacebookCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var feedVC: FeedViewController? = nil
+    var profileVC: ProfileViewController? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.        
@@ -38,39 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
-        
-        let connection = GraphRequestConnection()
-        connection.add(GraphRequest(graphPath: "me/", parameters: ["fields":"email,name"], accessToken: AccessToken.current, httpMethod: GraphRequestHTTPMethod(rawValue: "GET")!, apiVersion: GraphAPIVersion.defaultVersion)) { httpResponse, result in
-            switch result {
-            case .success(let response):
-                
-                let email = response.dictionaryValue?["email"] as! String
-                let name = response.dictionaryValue?["name"] as! String
-                let id = response.dictionaryValue?["id"] as! String
-                
-                let connection = GraphRequestConnection()
-                connection.add(GraphRequest(graphPath: "me/picture?type=large&redirect=false")) { httpResponse, result in
-                    switch result {
-                    case .success(let response):
-                        
-                        let picture = (response.dictionaryValue?["data"] as! [String: Any?])["url"] as! String
-                        GlobalState.user = User(id: id, name: name, picture: picture, email: email)
-                        
-                        // Send request to create user if user has not already been created
-                        let url = "https://quickshareios.herokuapp.com/user/create"
-                        Just.post(url, params: ["id": id, "name": name, "email": email], data: [:])
-                        
-                    case .failed(let error):
-                        print("Graph Request Failed: \(error)")
-                    }
-                }
-                connection.start()
-                
-            case .failed(let error):
-                print("Graph Request Failed: \(error)")
-            }
+        if GlobalState.items.count == 0 {
+            loadItems(unwindSegue: nil, identifier: nil)
         }
-        connection.start()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -83,6 +55,162 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func loadItems(unwindSegue: UIViewController?, identifier: String?) {
+        
+        GlobalState.items = []
+        
+        Just.get("https://quickshareios.herokuapp.com/item/read") { r in
+            if r.ok { /* success! */
+                let data = r.text?.data(using: .utf8)!
+                let json = try? JSONSerialization.jsonObject(with: data!) as! [Any]
+                var i = 0
+                while i < (json?.count)! {
+                    
+                    let item = json?[i] as! [String:Any]
+                    let item_id = item["id"] as! Int
+                    let title = item["title"] as! String
+                    let description = item["description"] as! String
+                    let price = item["price"] as! String
+                    let picture = item["picture"] as! String
+                    let viewNum = item["viewNum"] as! Int
+                    let userName = (item["user"] as! [String: Any])["name"] as! String
+                    let email = (item["user"] as! [String: Any])["email"] as! String
+                    let item_uid = item["user_uid"] as! String
+                    
+                    let itemObject = Item(title: title, description: description, price: price, picture: picture, viewNum: viewNum, userName: userName, uid: item_uid, isFB: false, post_id: nil, email: email, item_id: item_id)
+                    GlobalState.items.append(itemObject)
+                    i += 1
+                }
+            }
+        }
+        if ((FBSDKAccessToken.current()) != nil) {
+            let connection = GraphRequestConnection()
+            connection.add(GraphRequest(graphPath: "me/", parameters: ["fields":"email,name"], accessToken: AccessToken.current, httpMethod: GraphRequestHTTPMethod(rawValue: "GET")!, apiVersion: GraphAPIVersion.defaultVersion)) { httpResponse, result in
+                switch result {
+                case .success(let response):
+                    
+                    let email = response.dictionaryValue?["email"] as! String
+                    let name = response.dictionaryValue?["name"] as! String
+                    let id = response.dictionaryValue?["id"] as! String
+                    
+                    let connection = GraphRequestConnection()
+                    connection.add(GraphRequest(graphPath: "me/picture?type=large&redirect=false")) { httpResponse, result in
+                        switch result {
+                        case .success(let response):
+                            
+                            let picture = (response.dictionaryValue?["data"] as! [String: Any?])["url"] as! String
+                            GlobalState.user = User(id: id, name: name, picture: picture, email: email)
+                            
+                            // Send request to create user if user has not already been created
+                            let url = "https://quickshareios.herokuapp.com/user/create"
+                            Just.post(url, params: ["id": id, "name": name, "email": email], data: [:])
+                            
+                            /***** Try group ****/
+                            let connection = GraphRequestConnection()
+                            connection.add(GraphRequest(graphPath: "/266259930135554/feed")) { httpResponse, result in
+                                switch result {
+                                case .success(let response):
+                                    
+                                    var postsMap: [String: [String:String]] = [:]
+                                    var objectMap: [String: String] = [:]
+                                    let posts = response.dictionaryValue?["data"] as! [Any?]
+                                    for post in posts {
+                                        
+                                        if (post as! [String:Any?])["message"] == nil {
+                                            continue
+                                        }
+                                        
+                                        let post_id = (post as! [String:Any?])["id"] as! String
+                                        
+                                        let connection = GraphRequestConnection()
+                                        connection.add(GraphRequest(graphPath: "/" + post_id + "?fields=object_id")) { httpResponse, result in
+                                            switch result {
+                                            case .success(let response):
+                                                
+                                                let post_id = response.dictionaryValue?["id"] as! String
+                                                
+                                                if let object_id_test = response.dictionaryValue?["object_id"] {
+                                                    let object_id = object_id_test as! String
+                                                    
+                                                    objectMap[object_id] = post_id
+                                                    
+                                                    let connection = GraphRequestConnection()
+                                                    connection.add(GraphRequest(graphPath: "/" + object_id + "?fields=images")) { httpResponse, result in
+                                                        switch result {
+                                                        case .success(let response):
+                                                            let object_id = response.dictionaryValue?["id"] as! String
+                                                            let imageArray = response.dictionaryValue?["images"] as! [Any?]
+                                                            let image = imageArray[0] as! [String:Any?]
+                                                            let link = image["source"] as! String
+                                                            
+                                                            let post_id = objectMap[object_id]
+                                                            let item = postsMap[post_id!]
+                                                            GlobalState.items.insert(Item(title: item!["title"]!, description: item!["description"]!, price: item!["price"]!, picture: link, viewNum: 0, userName: "Facebook", uid: "Facebook", isFB: true, post_id: post_id, email: "", item_id: nil), at: Int(arc4random_uniform(UInt32(GlobalState.items.count))))
+                                                            
+                                                            self.feedVC?.reloadData()
+                                                            
+                                                            if identifier != nil {
+                                                                unwindSegue?.performSegue(withIdentifier: identifier!, sender: unwindSegue!)
+                                                            }
+                                                            
+                                                        case .failed(let error):
+                                                            print("Graph Request Failed: \(error)")
+                                                        }
+                                                    }
+                                                    connection.start()
+                                                } else {
+                                                    let item = postsMap[post_id]
+                                                    GlobalState.items.insert(Item(title: item!["title"]!, description: item!["description"]!, price: item!["price"]!, picture: nil, viewNum: 0, userName: "Facebook", uid: "Facebook", isFB: true, post_id: post_id, email: "", item_id: nil), at: Int(arc4random_uniform(UInt32(GlobalState.items.count))))
+                                                }
+                                                
+                                            case .failed(let error):
+                                                print("Graph Request Failed: \(error)")
+                                            }
+                                        }
+                                        connection.start()
+                                        
+                                        let message = (post as! [String:Any?])["message"] as! String
+                                        let messageComponents = message.characters.split{ $0 == "\n" }.map(String.init)
+                                        
+                                        let title = messageComponents[0]
+                                        
+                                        let price: String
+                                        if messageComponents.count > 1 {
+                                            price = messageComponents[1].characters.split{ $0 == "-" }.map(String.init)[0]
+                                        } else {
+                                            price = "0"
+                                        }
+                                        
+                                        let description: String
+                                        if messageComponents.count > 2 {
+                                            description = messageComponents[2]
+                                        } else {
+                                            description = ""
+                                        }
+                                        
+                                        postsMap[post_id] = ["title": title, "price": price, "description": description]
+                                    }
+                                    
+                                case .failed(let error):
+                                    print("Graph Request Failed: \(error)")
+                                }
+                            }
+                            connection.start()
+                            
+                        case .failed(let error):
+                            print("Graph Request Failed: \(error)")
+                        }
+                    }
+                    connection.start()
+                    
+                case .failed(let error):
+                    print("Graph Request Failed: \(error)")
+                }
+            }
+            connection.start()
+        }
     }
 }
 

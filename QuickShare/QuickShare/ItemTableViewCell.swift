@@ -11,4 +11,5 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var product: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var productDescription: UILabel!
+    @IBOutlet weak var price: UILabel!
 }

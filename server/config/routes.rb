@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/item/create', to: 'application#create_item'
   get '/item/read', to: 'application#read_item'
   post '/user/create', to: 'application#create_user'
-  post '/image/upload', to: 'application#upload_image'
+  post '/item/update', to: 'application#update_item'
 end

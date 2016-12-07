@@ -33,6 +33,7 @@
 	<string>QuickShareIOS</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fb</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
@@ -40,6 +41,15 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>QuickShare uses your camera to take photos to use as product images.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>QuickShare uses your photo library to select photos to use as product images.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -50,10 +60,6 @@
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>QuickShare uses your photo library to select photos to use as product images.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>QuickShare uses your camera to take photos to use as product images.</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIStatusBarTintParameters</key>

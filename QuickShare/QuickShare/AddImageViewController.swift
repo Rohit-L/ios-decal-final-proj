@@ -11,11 +11,35 @@ import Fusuma
 
 class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDelegate {
 
+    var item: Item?
+    var mode: String = "EditingNew"
+    
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var LoaderView: UIView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var image: UIImageView!
+
+    @IBAction func SaveButtonPressed(_ sender: Any) {
+        if self.priceTextField.text == "" || self.titleTextField.text == "" || self.descriptionTextField.text == "" || image.image == nil {
+            return
+        } else {
+            self.LoaderView.isHidden = false
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            
+            if self.mode == "EditingExisting" {
+                imageUploadRequest(image: image.image!, url: "https://quickshareios.herokuapp.com/item/update", param: ["title": self.titleTextField.text!, "description": self.descriptionTextField.text!, "price": self.priceTextField.text!, "user_uid": (GlobalState.user?.id)!, "item_id": (item?.item_id)!])
+            } else {
+                imageUploadRequest(image: image.image!, url: "https://quickshareios.herokuapp.com/item/create", param: ["title": self.titleTextField.text!, "description": self.descriptionTextField.text!, "price": self.priceTextField.text!, "user_uid": (GlobalState.user?.id)!])
+            }
+        }
+    }
+    @IBAction func CancelButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindToProfile", sender: self)
+    }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -32,12 +56,24 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
     
     func imageTapped(_ gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
+        if self.mode == "EditingExisting" {
+            return
+        }
+        
         if (gesture.view as? UIImageView) != nil {
             let fusuma = FusumaViewController()
             fusuma.delegate = self
             fusuma.hasVideo = false // If you want to let the users allow to use video.
             UIApplication.shared.isStatusBarHidden = true
             self.present(fusuma, animated: true, completion: nil)
+        }
+    }
+    
+    func setMode() {
+        if self.item != nil {
+            self.mode = "EditingExisting"
+        } else {
+            self.mode = "EditingNew"
         }
     }
     
@@ -48,10 +84,23 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if self.mode == "EditingExisting" {
+            self.addImageButton.isHidden = true
+            self.image.downloadedFrom(link: (self.item?.picture!)!)
+            self.titleTextField.text = self.item?.title
+            self.descriptionTextField.text = self.item?.description
+            self.priceTextField.text = self.item?.price
+        }
+
         // Do any additional setup after loading the view.
+        setNavigationBarStyle()
+        self.LoaderView.isHidden = true
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
         image.addGestureRecognizer(tapGesture)
         image.isUserInteractionEnabled = true
+        image.image = nil
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,24 +109,19 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
     }
     
     public func fusumaImageSelected(_ image: UIImage) {
-        print("Image selected")
     }
     
     public func fusumaDismissedWithImage(_ image: UIImage) {
-        print("Called just after FusumaViewController is dismissed.")
         self.addImageButton.isHidden = true
         self.image.image = image
         self.image.contentMode = .scaleAspectFill
         self.image.clipsToBounds = true
-        //imageUploadRequest(image: image, url: "https://quickshareios.herokuapp.com/image/upload", param: ["Hello": "World"])
     }
     
     public func fusumaVideoCompleted(withFileURL fileURL: URL) {
-        print("Video Completed")
     }
     
     public func fusumaCameraRollUnauthorized() {
-        print("Unauthorized Camera Roll")
     }
     
     func imageUploadRequest(image: UIImage, url: String, param: [String:String]?) {
@@ -113,16 +157,8 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
                 let responseString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
                 print("****** response data = \(responseString!)")
                 
-                //let json =  try!JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
-                
-                //print("json value \(json)")
-                
-                //var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err)
-                
-//                DispatchQueue.main.asynchronously(execute: {
-//                    //self.myActivityIndicator.stopAnimating()
-//                    //self.imageView.image = nil;
-//                });
+                self.LoaderView.isHidden = true
+                (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: self, identifier: "unwindToProfile")
                 
             } else if let error = error {
                 print(error.localizedDescription)
@@ -132,7 +168,6 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
         task.resume()
         
     }
-    
     
     func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
         let body = NSMutableData();
@@ -164,15 +199,12 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
         return "Boundary-\(NSUUID().uuidString)"
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setNavigationBarStyle() {
+        self.navigationBar.barTintColor = UIColor.primary()
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.tintColor = UIColor.white
+        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
-    */
 
 }
 

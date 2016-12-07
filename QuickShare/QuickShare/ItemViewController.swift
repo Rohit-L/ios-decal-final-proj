@@ -18,6 +18,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemViewNum: UILabel!
+    @IBOutlet weak var sellerEmail: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +28,34 @@ class ItemViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.itemImage.downloadedFrom(link: (item?.picture)!)
-        self.itemImage.downloadedFrom(link: (item?.picture)!)
+        
+        if (item?.isFB)! {
+            UIApplication.shared.open(NSURL(string: "https://www.facebook.com/" + (item?.post_id)!)! as URL, options: [:], completionHandler: nil)
+        }
+        
+        if (item?.picture) != nil {
+          self.itemImage.downloadedFrom(link: (item?.picture)!)
+        } else {
+            self.itemImage.image = UIImage(named: "NoImageFound")
+        }
+        
         self.sellerName.text = item?.userName
-        self.itemPrice.text = "$" + String(format: "%.2f", (item?.price)!)
+        
+        
+        if item?.price.lowercased().range(of: "free") != nil {
+            self.itemPrice.text = item?.price
+        } else {
+            if item?.price.range(of: "$") != nil {
+                self.itemPrice.text = item?.price
+            } else {
+                self.itemPrice.text = "$" + (item?.price)!
+            }
+        }
+
         self.itemViewNum.text = "Viewed " + String((item?.viewNum)!) + " times"
         self.titleLabel.text = item?.title
         self.descriptionLabel.text = item?.description
+        self.sellerEmail.text = item?.email
     }
     
     override func viewDidAppear(_ animated: Bool) {

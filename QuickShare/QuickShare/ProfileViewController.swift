@@ -11,12 +11,16 @@ import FBSDKLoginKit
 
 class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
 
+    @IBAction func unwindToProfile(segue: UIStoryboardSegue) {}
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var loginButton: FBSDKLoginButton = FBSDKLoginButton.init()
     let itemsPerRow: CGFloat = 3
     
     @IBAction func LogOutAction(_ sender: Any) {
+        GlobalState.items = []
+        GlobalState.user = nil
         loginButton.sendActions(for: .touchUpInside)
     }
     @IBOutlet weak var ProfileImage: UIImageView!
@@ -25,7 +29,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        (UIApplication.shared.delegate as! AppDelegate).profileVC = self
         self.title = "Profile"
         
         setNavigationBarStyle()
@@ -43,17 +48,17 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
         
         self.view.backgroundColor = UIColor.primary()
         
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.items = []
         for item in GlobalState.items {
             if item.uid == GlobalState.user?.id {
                 self.items.append(item)
             }
         }
-        
-        
-        DispatchQueue.main.async(execute: { () -> Void in
-            self.collectionView.reloadData()
-        })
-        
+        self.collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +73,6 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
     }
     
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("LoggedOut")
         self.tabBarController?.selectedIndex = 0
     }
     
@@ -86,12 +90,13 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell",
                                                       for: indexPath) as! ItemCollectionViewCell
         cell.backgroundColor = UIColor.black
-        cell.image.downloadedFrom(link: self.items[indexPath.row].picture)
+        cell.image.image = nil
+        cell.image.downloadedFrom(link: self.items[indexPath.row].picture!)
         
-        // Configure the cell
         return cell
     }
     
@@ -128,15 +133,27 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
         tabBar?.frame.size.width = self.view.frame.width + 4
         tabBar?.frame.origin.x = -2
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func reloadData() {
+//        self.items = []
+//        for item in GlobalState.items {
+//            if item.uid == GlobalState.user?.id {
+//                self.items.append(item)
+//            }
+//        }
+//        self.collectionView.reloadData()
     }
-    */
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editExistingItem" {
+            let cell = sender as! ItemCollectionViewCell
+            let indexPath = self.collectionView.indexPath(for: cell)
+            (segue.destination as! AddImageViewController).item = self.items[(indexPath?.row)!]
+        } else {
+            (segue.destination as! AddImageViewController).item = nil
+        }
+        (segue.destination as! AddImageViewController).setMode()
+    }
 
 }
