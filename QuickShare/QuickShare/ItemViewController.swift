@@ -18,7 +18,14 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemViewNum: UILabel!
-    @IBOutlet weak var sellerEmail: UILabel!
+    @IBOutlet weak var sellerEmail: UIButton!
+    
+    @IBAction func emailTapped(_ sender: Any) {
+        let email = sellerEmail.titleLabel?.text!
+        let urlString = "mailto:\(email!)"
+        let url = URL(string: urlString)
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +62,7 @@ class ItemViewController: UIViewController {
         self.itemViewNum.text = "Viewed " + String((item?.viewNum)!) + " times"
         self.titleLabel.text = item?.title
         self.descriptionLabel.text = item?.description
-        self.sellerEmail.text = item?.email
+        self.sellerEmail.setTitle(item?.email, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {

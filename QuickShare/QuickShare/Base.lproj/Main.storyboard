@@ -234,20 +234,20 @@
                                                             <constraint firstAttribute="height" constant="0.5" id="iX0-xg-LuW"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhr-Qf-wd2" userLabel="SellerName">
-                                                        <rect key="frame" x="8" y="40" width="359" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhr-Qf-wd2" userLabel="SellerName">
+                                                        <rect key="frame" x="8" y="41" width="359" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(111) 222-3333" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sff-5I-ciw" userLabel="SellerNumber">
-                                                        <rect key="frame" x="8" y="69" width="359" height="13.5"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbZ-T4-umN">
+                                                        <rect key="frame" x="8" y="63" width="35" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="emailTapped:" destination="dsu-Y3-b5y" eventType="touchUpInside" id="Sqg-sP-O7I"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -255,9 +255,14 @@
                                                     <constraint firstItem="UA9-Oe-psL" firstAttribute="leading" secondItem="3uX-9j-Gk7" secondAttribute="leading" id="4A2-6I-gIc"/>
                                                     <constraint firstAttribute="trailing" secondItem="cS5-5f-r4o" secondAttribute="trailing" constant="8" id="Alf-5y-w8O"/>
                                                     <constraint firstAttribute="trailing" secondItem="UA9-Oe-psL" secondAttribute="trailing" id="BJk-XY-Hmq"/>
+                                                    <constraint firstItem="yhr-Qf-wd2" firstAttribute="top" secondItem="UA9-Oe-psL" secondAttribute="bottom" constant="8" id="Kl4-ep-61l"/>
                                                     <constraint firstItem="UA9-Oe-psL" firstAttribute="top" secondItem="cS5-5f-r4o" secondAttribute="bottom" constant="8" id="jWC-bb-YMp"/>
+                                                    <constraint firstItem="yhr-Qf-wd2" firstAttribute="leading" secondItem="3uX-9j-Gk7" secondAttribute="leading" constant="8" id="nb9-sv-q3D"/>
+                                                    <constraint firstItem="mbZ-T4-umN" firstAttribute="top" secondItem="yhr-Qf-wd2" secondAttribute="bottom" constant="1" id="pCG-Or-Jik"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yhr-Qf-wd2" secondAttribute="trailing" constant="8" id="reA-Ua-Gmx"/>
                                                     <constraint firstItem="cS5-5f-r4o" firstAttribute="top" secondItem="3uX-9j-Gk7" secondAttribute="top" constant="8" id="sD3-5x-y9H"/>
                                                     <constraint firstItem="cS5-5f-r4o" firstAttribute="leading" secondItem="3uX-9j-Gk7" secondAttribute="leading" constant="8" id="vCr-MC-VBF"/>
+                                                    <constraint firstItem="mbZ-T4-umN" firstAttribute="leading" secondItem="3uX-9j-Gk7" secondAttribute="leading" constant="8" id="xVv-nK-soO"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-KP-k3N" userLabel="PriceTitleBorder">
@@ -341,7 +346,7 @@
                         <outlet property="itemImage" destination="8yx-GZ-wPi" id="Ecl-N4-ljK"/>
                         <outlet property="itemPrice" destination="jPd-pl-vtR" id="fxB-S6-xcq"/>
                         <outlet property="itemViewNum" destination="YVu-Uc-P3Y" id="GLT-Es-hPp"/>
-                        <outlet property="sellerEmail" destination="sff-5I-ciw" id="2oO-98-VTz"/>
+                        <outlet property="sellerEmail" destination="mbZ-T4-umN" id="Z4H-Ye-WZf"/>
                         <outlet property="sellerName" destination="yhr-Qf-wd2" id="2WV-37-l4F"/>
                         <outlet property="titleLabel" destination="9Dh-Of-sAV" id="2Ju-w7-Wrx"/>
                     </connections>
