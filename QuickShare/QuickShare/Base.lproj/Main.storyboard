@@ -418,7 +418,7 @@
         <scene sceneID="ocT-AW-0z8">
             <objects>
                 <navigationController title="Profile" id="b47-FK-wJD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="second" id="xii-91-h3y"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="xii-91-h3y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kA4-vG-xCD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -733,6 +733,7 @@
     </scenes>
     <resources>
         <image name="home" width="30" height="30"/>
+        <image name="profile" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
