@@ -1,12 +1,25 @@
-# Images of Final App
+# QuickShare
+
+## Dependencies
+ - [Fusuma](https://github.com/ytakzk/Fusuma)
+ - [Facebook iOS SDK](https://developers.facebook.com/docs/ios/)
+ - [Facebook Swift SDK](https://developers.facebook.com/docs/swift)
+ - [RevealingSplashView](https://github.com/PiXeL16/RevealingSplashView)
+ - [Bolts (included with Facebook iOS SDK)](https://github.com/BoltsFramework)
+
+Upon opening the project in Xcode, if you have problems running the project in the iOS simulator, try executing 
+```
+carthage build --platform iOS
+```
+in the project folder (the folder with `Cartfile`). You must have [Carthage](https://github.com/Carthage/Carthage) installed for this to work.
+
+## Images of Final App
 
 ![alt text](https://s28.postimg.org/jd3web9y5/IMG_0018_2.png "Launch Screen")
 ![alt text](https://s28.postimg.org/fi0ibqqsd/IMG_0019.png "Feed")
 ![alt_text](https://s15.postimg.org/kpaqsxzcb/IMG_0020.png "Profile")
 ![alt_text](https://s15.postimg.org/e047cxe0b/IMG_0021.png "Add Item")
 ![alt_text](https://s15.postimg.org/cz3ynsx0r/IMG_0022.png "View Item")
-
-# QuickShare
 
 ## Authors
 
