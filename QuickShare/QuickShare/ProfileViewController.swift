@@ -30,6 +30,11 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if (GlobalState.isGuest) {
+            self.tabBarController?.selectedIndex = 0
+            return
+        }
+        
         (UIApplication.shared.delegate as! AppDelegate).profileVC = self
         self.title = "Profile"
         
@@ -52,6 +57,7 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         self.items = []
         for item in GlobalState.items {
             if item.uid == GlobalState.user?.id {
@@ -92,7 +98,8 @@ class ProfileViewController: UIViewController, FBSDKLoginButtonDelegate, UIColle
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell",
-                                                      for: indexPath) as! ItemCollectionViewCell
+                                                    for: indexPath) as! ItemCollectionViewCell
+        cell.activity.startAnimating()
         cell.backgroundColor = UIColor.black
         cell.image.image = nil
         cell.image.downloadedFrom(link: self.items[indexPath.row].picture!)

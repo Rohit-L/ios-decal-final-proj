@@ -33,6 +33,8 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if ((FBSDKAccessToken.current()) != nil) {
             self.dismiss(animated: false, completion: nil)
         }
+        
+        GlobalState.doNotReload = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +42,11 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func guestModeRequested(_ sender: Any) {
+        GlobalState.isGuest = true
+        (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: nil, identifier: nil, toggleReload: true)
+        self.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: FBSDKLoginButtonDelegate Methods
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -65,7 +72,7 @@ class FBLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             // Send request to create user if user has not already been created
                             let url = "https://quickshareios.herokuapp.com/user/create"
                             Just.post(url, params: ["id": id, "name": name, "email": email], data: [:])
-                            (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: nil, identifier: nil)
+                            (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: nil, identifier: nil, toggleReload: true)
                             self.dismiss(animated: true, completion: nil)
                         case .failed(let error):
                             print("Graph Request Failed: \(error)")

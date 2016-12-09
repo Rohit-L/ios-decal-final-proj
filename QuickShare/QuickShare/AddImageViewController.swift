@@ -113,6 +113,7 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
     
     public func fusumaDismissedWithImage(_ image: UIImage) {
         self.addImageButton.isHidden = true
+        self.image.contentMode = .scaleAspectFill
         self.image.image = image
         self.image.contentMode = .scaleAspectFill
         self.image.clipsToBounds = true
@@ -158,7 +159,7 @@ class AddImageViewController: UIViewController, FusumaDelegate, UITextFieldDeleg
                 print("****** response data = \(responseString!)")
                 
                 self.LoaderView.isHidden = true
-                (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: self, identifier: "unwindToProfile")
+                (UIApplication.shared.delegate as! AppDelegate).loadItems(unwindSegue: self, identifier: "unwindToProfile", toggleReload: false)
                 
             } else if let error = error {
                 print(error.localizedDescription)

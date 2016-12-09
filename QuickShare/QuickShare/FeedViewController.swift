@@ -48,7 +48,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         reloadData()
         // Set status bar for entire application
-        if ((FBSDKAccessToken.current()) == nil) {
+        
+        if GlobalState.isGuest {
+            self.tabBarController?.tabBar.isHidden = true
+        }
+        
+        if ((FBSDKAccessToken.current()) == nil && GlobalState.isGuest == false) {
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "login")
             self.present(vc, animated: true, completion: nil)

@@ -381,12 +381,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeN-OH-Owg">
+                                <rect key="frame" x="136" y="629" width="102" height="30"/>
+                                <state key="normal" title="Login as Guest">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="guestModeRequested:" destination="96z-Eb-V1q" eventType="touchUpInside" id="D7f-vN-nWH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.62352941179999999" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="WOp-bG-3dY" secondAttribute="trailing" id="0Pf-jg-qvY"/>
+                            <constraint firstItem="8IB-J6-vGs" firstAttribute="top" secondItem="jeN-OH-Owg" secondAttribute="bottom" constant="8" id="KrM-hl-Kvd"/>
                             <constraint firstItem="WOp-bG-3dY" firstAttribute="centerX" secondItem="5p3-Wj-wv3" secondAttribute="centerX" id="fFB-5P-FN2"/>
                             <constraint firstItem="WOp-bG-3dY" firstAttribute="leading" secondItem="5p3-Wj-wv3" secondAttribute="leadingMargin" id="hN7-ma-YjS"/>
+                            <constraint firstItem="jeN-OH-Owg" firstAttribute="centerX" secondItem="5p3-Wj-wv3" secondAttribute="centerX" id="naB-rZ-kvX"/>
                             <constraint firstItem="WOp-bG-3dY" firstAttribute="top" secondItem="xfO-F2-gwC" secondAttribute="bottom" constant="175" id="vpE-9t-lRA"/>
                         </constraints>
                     </view>
@@ -510,18 +521,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="E2c-G4-G4H">
+                                                    <rect key="frame" x="46" y="46" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6g8-mk-fLU">
                                                     <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="E2c-G4-G4H" secondAttribute="bottom" constant="38" id="0y9-di-Ubp"/>
                                             <constraint firstItem="6g8-mk-fLU" firstAttribute="leading" secondItem="Ld5-PB-hDA" secondAttribute="leading" id="AO3-r1-vTt"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="E2c-G4-G4H" secondAttribute="trailing" constant="38" id="I1z-PX-AIL"/>
+                                            <constraint firstItem="E2c-G4-G4H" firstAttribute="top" secondItem="Ld5-PB-hDA" secondAttribute="topMargin" constant="38" id="RTg-n0-gWo"/>
                                             <constraint firstAttribute="bottom" secondItem="6g8-mk-fLU" secondAttribute="bottom" id="dji-iq-ngs"/>
                                             <constraint firstAttribute="trailing" secondItem="6g8-mk-fLU" secondAttribute="trailing" id="nt8-3d-FVq"/>
                                             <constraint firstItem="6g8-mk-fLU" firstAttribute="top" secondItem="Ld5-PB-hDA" secondAttribute="top" id="xRO-vS-PG0"/>
+                                            <constraint firstItem="E2c-G4-G4H" firstAttribute="leading" secondItem="Ld5-PB-hDA" secondAttribute="leadingMargin" constant="38" id="y3y-dQ-0kp"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activity" destination="E2c-G4-G4H" id="uQc-j7-bI1"/>
                                             <outlet property="image" destination="6g8-mk-fLU" id="wDI-bA-sw3"/>
                                             <segue destination="qyC-4n-3Xo" kind="presentation" identifier="editExistingItem" id="0wo-Lj-0U2"/>
                                         </connections>

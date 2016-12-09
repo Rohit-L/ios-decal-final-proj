@@ -40,8 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
+        
+        if GlobalState.doNotReload {
+            return
+        }
+        
         if GlobalState.items.count == 0 {
-            loadItems(unwindSegue: nil, identifier: nil)
+            loadItems(unwindSegue: nil, identifier: nil, toggleReload: false)
         }
     }
 
@@ -57,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
-    func loadItems(unwindSegue: UIViewController?, identifier: String?) {
+    func loadItems(unwindSegue: UIViewController?, identifier: String?, toggleReload: Bool) {
         
         GlobalState.items = []
         
@@ -82,6 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let itemObject = Item(title: title, description: description, price: price, picture: picture, viewNum: viewNum, userName: userName, uid: item_uid, isFB: false, post_id: nil, email: email, item_id: item_id)
                     GlobalState.items.append(itemObject)
                     i += 1
+                }
+                
+                if (GlobalState.isGuest) {
+                    self.feedVC?.reloadData()
                 }
             }
         }
@@ -116,6 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     var postsMap: [String: [String:String]] = [:]
                                     var objectMap: [String: String] = [:]
                                     let posts = response.dictionaryValue?["data"] as! [Any?]
+                                    var posts_count: Int = 0
+                                    var count: Int = 0
                                     for post in posts {
                                         
                                         if (post as! [String:Any?])["message"] == nil {
@@ -135,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                     let object_id = object_id_test as! String
                                                     
                                                     objectMap[object_id] = post_id
+                                                    posts_count += 1
                                                     
                                                     let connection = GraphRequestConnection()
                                                     connection.add(GraphRequest(graphPath: "/" + object_id + "?fields=images")) { httpResponse, result in
@@ -149,10 +161,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                             let item = postsMap[post_id!]
                                                             GlobalState.items.insert(Item(title: item!["title"]!, description: item!["description"]!, price: item!["price"]!, picture: link, viewNum: 0, userName: "Facebook", uid: "Facebook", isFB: true, post_id: post_id, email: "", item_id: nil), at: Int(arc4random_uniform(UInt32(GlobalState.items.count))))
                                                             
-                                                            self.feedVC?.reloadData()
+                                                            if (toggleReload) {
+                                                                GlobalState.doNotReload = false
+                                                            }
                                                             
-                                                            if identifier != nil {
-                                                                unwindSegue?.performSegue(withIdentifier: identifier!, sender: unwindSegue!)
+                                                            count += 1
+                                                      
+                                                            if count == posts_count {
+                                                                self.feedVC?.reloadData()
+                                                                if identifier != nil {
+                                                                    unwindSegue?.performSegue(withIdentifier: identifier!, sender: unwindSegue!)
+                                                                }
                                                             }
                                                             
                                                         case .failed(let error):
@@ -226,8 +245,10 @@ extension UIColor {
 }
 
 struct GlobalState {
+    static var isGuest: Bool = false
     static var user: User? = nil
     static var items: [Item] = []
+    static var doNotReload: Bool = false
 }
 
 /* Extension to load image from URL into UIImageView
