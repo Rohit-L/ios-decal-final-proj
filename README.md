@@ -1,3 +1,11 @@
+# Images of Final App
+
+![alt text](https://s28.postimg.org/jd3web9y5/IMG_0018_2.png "Launch Screen")
+![alt text](https://s28.postimg.org/fi0ibqqsd/IMG_0019.png "Feed")
+![alt_text](https://s15.postimg.org/kpaqsxzcb/IMG_0020.png "Profile")
+![alt_text](https://s15.postimg.org/e047cxe0b/IMG_0021.png "Add Item")
+![alt_text](https://s15.postimg.org/cz3ynsx0r/IMG_0022.png "View Item")
+
 # QuickShare
 
 ## Authors
